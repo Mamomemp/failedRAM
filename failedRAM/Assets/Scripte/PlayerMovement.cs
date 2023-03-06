@@ -4,44 +4,41 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {    
-    public Vector3 start_position;
     public Transform target;
-
-    public float target_sprung_weite;    
+    public float target_sprung_weite;
+    public float spieler_geschwindichkeit;
     public float lauf_coldown;
-    public float gewollteZeitDauer;
-    public AnimationCurve curve;
-    private float vergangene_Zeit;
+
+    public LayerMask barriere_Layer;
+    private Vector3 target_neue_position = target.position + new Vector3(Input.GetAxisRaw("Horizontal") * target_sprung_weite, 0f, 0f); //Test
 
     private void Start()
     {
         target.parent = null;    
-        start_position = transform.position;
-
     }
 
     private void Update()
     {     
-
         //Bewegung
-        vergangene_Zeit += Time.deltaTime;
-        float percentageComplete = vergangene_Zeit / gewollteZeitDauer;
-        transform.position = Vector3.Lerp(start_position, target.position, curve.Evaluate(percentageComplete));
+        transform.position = Vector3.MoveTowards(transform.position, target.position, spieler_geschwindichkeit*Time.deltaTime);
+
         //Coldown
         if (Vector3.Distance(transform.position, target.position) <= lauf_coldown)
         {
             //Input
             if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) == 1)
-            {                start_position = transform.position;
-
-                target.position += new Vector3(Input.GetAxisRaw("Horizontal")*target_sprung_weite, 0f, 0f);
-
+            {
+                if (!Physics.OverlapSphere(target.position + new Vector3(Input.GetAxisRaw("Horizontal") * target_sprung_weite, 0f, 0f), .2f, barriere_Layer))
+                {
+                    target.position += new Vector3(Input.GetAxisRaw("Horizontal") * target_sprung_weite, 0f, 0f);
+                }
             }
             else if (Mathf.Abs(Input.GetAxisRaw("Vertical")) == 1)
-            {                start_position = transform.position;
-
-                target.position += new Vector3(0f, 0f, Input.GetAxisRaw("Vertical")*target_sprung_weite);
-
+            {
+                if (Physics.OverlapSphere(target.position + new Vector3(Input.GetAxisRaw("Vertical") * target_sprung_weite), .2f, barriere_Layer))
+                {
+                    target.position += new Vector3(0f, 0f, Input.GetAxisRaw("Vertical") * target_sprung_weite);
+                }
             }
         }
     }

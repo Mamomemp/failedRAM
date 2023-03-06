@@ -509,10 +509,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98b16b09cfa82f34b847d4d9e62f130c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  start_position: {x: 0, y: 0, z: 0}
   target: {fileID: 1572041740}
-  target_speed: 4
-  speed: 4
+  target_sprung_weite: 4
   lauf_coldown: 0.02
+  gewollteZeitDauer: 40
+  curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!54 &1940190961
 Rigidbody:
   m_ObjectHideFlags: 0
