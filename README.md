@@ -1,2 +1,2 @@
 # failedRAM
-This is a project for school which TacoEric and i are building with Softbauware
+Dies ist ein schul Projet von Taco Eric und Mamomemp welches mit Softbauware entwickelt wird.
