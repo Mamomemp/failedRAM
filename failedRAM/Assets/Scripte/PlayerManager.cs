@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    public int spieler_leben;
-    public GameObject Spieler_Object;
+    [SerializeField] int max_spieler_leben;
+    private int spieler_leben;
+    [SerializeField] GameObject Spieler_Object;
 
-    public float dead_delay;
-    public float grace_period = 1f;
+    [SerializeField] HealthBar healthBar;
+    [SerializeField] ObjektPulser objektPulser;
+
+    [SerializeField] float dead_delay;
+    [SerializeField] float grace_period = 1f;
     private float letzter_treffer;
 
-    private void Start()
+    void Start()
     {
+        spieler_leben = max_spieler_leben;
+        healthBar.SetMaxHealth(max_spieler_leben);
         letzter_treffer = Time.time - grace_period;   
     }
 
@@ -36,6 +42,8 @@ public class PlayerManager : MonoBehaviour
 
     private void damage_nehmen(int damage) 
     {
+        objektPulser.Pulse();
         spieler_leben -= damage;
+        healthBar.SetHealth(spieler_leben);
     }
 }
