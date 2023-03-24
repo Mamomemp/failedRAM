@@ -10,6 +10,7 @@ public class PlayerManager : MonoBehaviour
 
     [SerializeField] HealthBar healthBar;
     [SerializeField] ObjektPulser objektPulser;
+    [SerializeField] GameOverScreen gameOverScreen;
 
     [SerializeField] float dead_delay;
     [SerializeField] float grace_period = 1f;
@@ -28,6 +29,7 @@ public class PlayerManager : MonoBehaviour
         if (spieler_leben <= 0) 
         {
             Destroy(Spieler_Object, dead_delay);
+            gameOverScreen.GameOverScreen_toggle();
         }
     }
 
