@@ -15,16 +15,16 @@ public class MenueLogik : MonoBehaviour
     void Update()
     {
         
-        if ((secret_level_start == false) && Input.GetKeyDown("horizontal")
+        if (secret_level_start == false && Input.GetAxisRaw("Horizontal") == 0)
         {
             secret_level_start = true;
             //hier startet das level
         }
           
-            if (Input.GetKeyDown(KeyCode.UpArrow))
-            {
-                SceneManager.LoadScene(LevelSelectScene);
-            }
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+           SceneManager.LoadScene("LevelSelectScene");
+        }
          
     } 
 }
