@@ -21,12 +21,12 @@ public class WinScreen : MonoBehaviour
             // Wenn der Spieler eine Taste drückt (außer R), lade die Szene des Hauptmenüs
             if (!Input.GetKeyDown("r"))
             {
-                SceneManager.LoadScene("MainMenuScene");
+                SceneManager.LoadScene("LevelSelectScene");
             }
             // Wenn der Spieler die R-Taste drückt, lade die aktuelle Szene neu
             else
             {            
-                SceneManager.LoadScene("LevelMenu");
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             }
         }
     }

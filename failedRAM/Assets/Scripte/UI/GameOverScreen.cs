@@ -21,7 +21,7 @@ public class GameOverScreen : MonoBehaviour
             // Wenn der Spieler die Escape-Taste drückt, lade die Szene des Hauptmenüs
             else
             {
-                SceneManager.LoadScene("MainMenuScene");
+                SceneManager.LoadScene("LevelSelectScene");
             }
         }
     }
