@@ -1990,7 +1990,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cf8cb1dcfc596348b37cf65a387a485, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  max_spieler_leben: 3
+  max_spieler_leben: 2
   Spieler_Object: {fileID: 1940190955}
   healthBar: {fileID: 6767412617719811815}
   objektPulser: {fileID: 6767412617719811808}
