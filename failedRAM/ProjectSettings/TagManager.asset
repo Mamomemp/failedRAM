@@ -6,6 +6,7 @@ TagManager:
   tags:
   - schaedlich
   - Indikator_aktivierer
+  - "L\xF6sche_Projektil"
   layers:
   - Default
   - TransparentFX
