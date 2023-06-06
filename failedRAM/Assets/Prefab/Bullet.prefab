@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 633315223267974136}
   - component: {fileID: 3399386071189745458}
   - component: {fileID: 4101827355278542294}
-  - component: {fileID: 1626897757347071376}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: schaedlich
@@ -100,17 +99,3 @@ MonoBehaviour:
   _speed: 40
   bulletPool: {fileID: 3286870114058883826, guid: 99140c0fb8026a647b6a12961c51477d, type: 3}
   _maxLebensZeit: 5
---- !u!136 &1626897757347071376
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3759933868938055399}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.009
-  m_Height: 0.02
-  m_Direction: 2
-  m_Center: {x: 0, y: 0, z: 0}

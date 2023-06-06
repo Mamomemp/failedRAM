@@ -24,6 +24,7 @@ public class Projektil : MonoBehaviour
             bulletPool.ReturnBullet(gameObject);
         }*/
     }
+    
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.tag == "Lösche_Projektil" && LayerMask.LayerToName(collision.gameObject.layer) == "Barriere")
@@ -31,5 +32,5 @@ public class Projektil : MonoBehaviour
             bulletPool.ReturnBullet(gameObject);
         }
     }
-
+    
 }
