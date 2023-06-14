@@ -26,17 +26,8 @@ public class RotateOnContact : MonoBehaviour
         if (other.CompareTag("Indikator_aktivierer"))
         {
             isInContact = false;
-            // Setze das Objekt auf die ursprüngliche Ausrichtung zurück
+            // Setze das Objekt auf die ursprEgliche Ausrichtung zurEk
             transform.rotation = initialRotation;
         }
     }
-    /*
-    void Update()
-    {
-        if (!isInContact)
-        {
-            // Setze das Objekt auf die ursprüngliche Ausrichtung zurück
-            transform.rotation = initialRotation;
-        }
-    }*/
 }

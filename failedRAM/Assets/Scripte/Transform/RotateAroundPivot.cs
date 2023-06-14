@@ -2,14 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RotateOn : MonoBehaviour
+public class RotateAroundPivot : MonoBehaviour
 {
+    [Header("Pivot Einstelllung")]
     [SerializeField]
     private bool use_Pivot;
     [SerializeField]
     private GameObject pivot_Target;
     [SerializeField]
     private int pivot_Speed;
+
+    [Header("Allgemeine Einstelllung")]
     [SerializeField]
     private float x_RotationSpeed;
     [SerializeField]
