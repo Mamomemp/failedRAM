@@ -15,8 +15,15 @@ public class BulletSpawner : MonoBehaviour
     public int derzeitigeElement = 0;
     public void SpawnBullet()
     {
-        spawnPosition = transformList[derzeitigeElement];
-        derzeitigeElement++;
+        if (derzeitigeElement < transformList.Count)
+        {
+            spawnPosition = transformList[derzeitigeElement];
+            derzeitigeElement++;
+        }
+        else
+        {
+            derzeitigeElement = 0;
+        }
 
         GameObject bullet = bulletPool.GetBullet();
 
