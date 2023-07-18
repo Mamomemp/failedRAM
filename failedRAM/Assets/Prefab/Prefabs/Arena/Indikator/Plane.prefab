@@ -99,6 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasCollided: 0
+  rotationDuration: 0.4
 --- !u!54 &7157234387371323594
 Rigidbody:
   m_ObjectHideFlags: 0
