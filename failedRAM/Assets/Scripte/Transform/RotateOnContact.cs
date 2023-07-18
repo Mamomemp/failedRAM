@@ -1,33 +1,50 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 public class RotateOnContact : MonoBehaviour
 {
-    bool isInContact = false;
-    Quaternion initialRotation;
+    [SerializeField]
+    private bool hasCollided = false; // Flag to track collision
 
-    void Start()
-    {
-        initialRotation = transform.rotation;
-    }
+    [SerializeField]
+    private float rotationDuration = 0.5f; // Duration for which the object remains rotated
 
-    void OnTriggerEnter(Collider other)
+    private Coroutine rotationCoroutine; // Reference to the coroutine
+
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.CompareTag("Indikator_aktivierer"))
+        // Check if colliding with an object with the "Indikator_aktivierer" tag and hasn't collided before
+        if (!hasCollided && collision.gameObject.CompareTag("Indikator_aktivierer"))
         {
-            isInContact = true;
-            // Drehe das Objekt schlagartig um 180 Grad um die x-Achse
-            transform.rotation = Quaternion.Euler(180f, 0f, 0f);
+            transform.localRotation = Quaternion.Euler(0, 180, 0);
+            hasCollided = true;
+
+            // Start the rotation timer
+            rotationCoroutine = StartCoroutine(RotateBack());
         }
     }
 
-    void OnTriggerExit(Collider other)
+    private void OnCollisionExit(Collision collision)
     {
-        if (other.CompareTag("Indikator_aktivierer"))
+        // Check if colliding with an object with the "Indikator_aktivierer" tag and hasn't collided before
+        if (hasCollided && collision.gameObject.CompareTag("Indikator_aktivierer"))
         {
-            isInContact = false;
-            // Setze das Objekt auf die ursprÅEgliche Ausrichtung zurÅEk
-            transform.rotation = initialRotation;
+            transform.localRotation = Quaternion.Euler(180, 0, 0);
+            hasCollided = false;
+
+            // Stop the rotation timer if it is running
+            if (rotationCoroutine != null)
+                StopCoroutine(rotationCoroutine);
         }
+    }
+
+    private IEnumerator RotateBack()
+    {
+        yield return new WaitForSeconds(rotationDuration);
+
+        transform.localRotation = Quaternion.Euler(180, 0, 0);
+        hasCollided = false;
     }
 }
+

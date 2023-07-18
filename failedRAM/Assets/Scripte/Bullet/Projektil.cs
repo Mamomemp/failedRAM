@@ -27,7 +27,7 @@ public class Projektil : MonoBehaviour
     
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Lösche_Projektil" && LayerMask.LayerToName(collision.gameObject.layer) == "Barriere")
+        if (collision.gameObject.CompareTag("Delete_Projektile"))// && LayerMask.LayerToName(collision.gameObject.layer) == "Barriere")
         {
             bulletPool.ReturnBullet(gameObject);
         }

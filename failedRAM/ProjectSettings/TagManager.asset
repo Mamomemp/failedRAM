@@ -6,7 +6,7 @@ TagManager:
   tags:
   - schaedlich
   - Indikator_aktivierer
-  - "L\xF6sche_Projektil"
+  - Delete_Projektile
   layers:
   - Default
   - TransparentFX
@@ -17,7 +17,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - Particle Barrier
   - Barriere
   - 
   - 
