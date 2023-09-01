@@ -9,21 +9,26 @@ public class WinScreen : MonoBehaviour
     public float delayTime = 1f; // Die Wartezeit vor dem Anzeigen des Win Screen
 
     private bool win = false;
+    [SerializeField]
+    GameOverScreen gameOverScreen;
 
     private void Start()
     {
+        if (!gameOverScreen.getGameOver()) 
+        {
         WinScreen_toggle();
+        }
     }
     public void Update()
     {
         if (win && Input.anyKeyDown)
         {
-            // Wenn der Spieler eine Taste drückt (außer R), lade die Szene des Hauptmenüs
+            // Wenn der Spieler eine Taste drEkt (außer R), lade die Szene des HauptmenE
             if (!Input.GetKeyDown("r"))
             {
                 SceneManager.LoadScene("LevelSelectScene");
             }
-            // Wenn der Spieler die R-Taste drückt, lade die aktuelle Szene neu
+            // Wenn der Spieler die R-Taste drEkt, lade die aktuelle Szene neu
             else
             {            
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);

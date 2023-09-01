@@ -13,12 +13,12 @@ public class GameOverScreen : MonoBehaviour
     {
         if (gameOver && Input.anyKeyDown)
         {
-            // Wenn der Spieler eine Taste drückt (außer ESC), lade die aktuelle Szene neu
+            // Wenn der Spieler eine Taste drEkt (außer ESC), lade die aktuelle Szene neu
             if (!Input.GetKeyDown(KeyCode.Escape))
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             }
-            // Wenn der Spieler die Escape-Taste drückt, lade die Szene des Hauptmenüs
+            // Wenn der Spieler die Escape-Taste drEkt, lade die Szene des HauptmenE
             else
             {
                 SceneManager.LoadScene("LevelSelectScene");
@@ -33,9 +33,15 @@ public class GameOverScreen : MonoBehaviour
         Invoke("ShowGameOverScreen", delayTime);
     }
 
+    public bool getGameOver() 
+    {
+        return gameOver;
+    }
+
     private void ShowGameOverScreen()
     {
         gameObject.SetActive(true);
     }
+
 }
 
