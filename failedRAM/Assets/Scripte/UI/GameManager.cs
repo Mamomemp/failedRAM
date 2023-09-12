@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -6,9 +6,9 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     [SerializeField]
-    private static GameOverScreen gameOverScreen;
+    private GameOverScreen gameOverScreen;
     [SerializeField]
-    private static WinScreen winScreen;
+    private WinScreen winScreen;
 
     private bool gameEnded = false;
 
@@ -29,6 +29,23 @@ public class GameManager : MonoBehaviour
         {
             gameEnded = true;
             gameOverScreen.GameOverScreen_toggle();
+        }
+    }
+
+    public void Update()
+    {
+        if ( gameEnded && Input.anyKeyDown)
+        {
+            // Wenn der Spieler eine Taste drückt (außer r), lade die aktuelle Szene neu
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                RestartLevel();
+            }
+            // Wenn der Spieler die -Taste drückt, lade die Szene des Hauptmenüs
+            else
+            {
+                ReturnToLevelSelect();
+            }
         }
     }
 

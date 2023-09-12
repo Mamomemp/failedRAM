@@ -943,8 +943,16 @@ PrefabInstance:
       propertyPath: Gamemanager
       value: 
       objectReference: {fileID: 1322467614}
+    - target: {fileID: 3815384738224341038, guid: 1d6b1722788d2a943b293147a287d74c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7572897192347011514, guid: 1d6b1722788d2a943b293147a287d74c, type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7572897192347011515, guid: 1d6b1722788d2a943b293147a287d74c, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7572897192347011518, guid: 1d6b1722788d2a943b293147a287d74c, type: 3}
@@ -959,6 +967,12 @@ PrefabInstance:
       propertyPath: gameoverscreen
       value: 
       objectReference: {fileID: 286283381}
+    - target: {fileID: 7572897193031808890, guid: 1d6b1722788d2a943b293147a287d74c, type: 3}
+      propertyPath: m_text
+      value: 'press any key to go back
+
+        press [R] to redo'
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7572897192347011518, guid: 1d6b1722788d2a943b293147a287d74c, type: 3}
     m_RemovedGameObjects: []
@@ -2370,6 +2384,17 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 6, y: 2, z: 25}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &760465818 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7572897192347011519, guid: 1d6b1722788d2a943b293147a287d74c, type: 3}
+  m_PrefabInstance: {fileID: 170714093}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 841bffbf922ab7449bd86b45ec5bd7ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &795493010
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2519,6 +2544,10 @@ PrefabInstance:
       propertyPath: dead_delay
       value: 0.2
       objectReference: {fileID: 0}
+    - target: {fileID: 5711026939838703283, guid: e643808494d960b45bda89c2421b94aa, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 1322467614}
     - target: {fileID: 5711026939838703283, guid: e643808494d960b45bda89c2421b94aa, type: 3}
       propertyPath: objektPulser
       value: 
@@ -8969,6 +8998,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23cc8868ed5c8334dbb5e039736a2fa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameOverScreen: {fileID: 286283381}
+  winScreen: {fileID: 760465818}
 --- !u!114 &1322467615
 MonoBehaviour:
   m_ObjectHideFlags: 0

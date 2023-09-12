@@ -4,27 +4,24 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    [SerializeField] int max_spieler_leben;
+    [SerializeField] private int max_spieler_leben;
     private int spieler_leben;
-    [SerializeField] GameObject Spieler_Object;
+    [SerializeField] private GameObject Spieler_Object;
 
-    [SerializeField] HealthBar healthBar;
-    [SerializeField] ObjektPulser objektPulser;
+    [SerializeField] private HealthBar healthBar;
+    [SerializeField] private ObjektPulser objektPulser;
 
-    [SerializeField] float dead_delay;
-    [SerializeField] float grace_period = 1f;
+    [SerializeField] private float dead_delay;
+    [SerializeField] private float grace_period = 1f;
     private float letzter_treffer;
 
-    private GameManager gameManager; // Reference to the GameManager
+    [SerializeField] private GameManager gameManager;
 
     void Start()
     {
         spieler_leben = max_spieler_leben;
         healthBar.SetMaxHealth(max_spieler_leben);
         letzter_treffer = Time.time - grace_period;
-
-        // Find the GameManager in the scene and store a reference to it
-        gameManager = FindObjectOfType<GameManager>();
     }
 
     // Update is called once per frame
