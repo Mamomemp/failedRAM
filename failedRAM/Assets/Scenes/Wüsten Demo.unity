@@ -410,7 +410,7 @@ MonoBehaviour:
   - {x: -18, y: 0, z: -6}
   - {x: -18, y: 0, z: 6}
   - {x: -18, y: 0, z: 3}
-  derzeitigeElement: 0
+  derzeitigeElement: 15
 --- !u!114 &116396523
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -498,7 +498,7 @@ MonoBehaviour:
   - {x: -18, y: 0, z: -6}
   - {x: -18, y: 0, z: 6}
   - {x: -18, y: 0, z: 3}
-  derzeitigeElement: 0
+  derzeitigeElement: 15
 --- !u!1001 &128822835
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2680,7 +2680,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 161a8d857be9ed241a85384f5bc2e300, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: -8.22
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 161a8d857be9ed241a85384f5bc2e300, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2725,6 +2725,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 161a8d857be9ed241a85384f5bc2e300, type: 3}
       propertyPath: m_Name
       value: Wurm (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 161a8d857be9ed241a85384f5bc2e300, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 161a8d857be9ed241a85384f5bc2e300, type: 3}
       propertyPath: m_TagString
@@ -2893,7 +2897,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 161a8d857be9ed241a85384f5bc2e300, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: -8.22
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 161a8d857be9ed241a85384f5bc2e300, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2938,6 +2942,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 161a8d857be9ed241a85384f5bc2e300, type: 3}
       propertyPath: m_Name
       value: Wurm (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 161a8d857be9ed241a85384f5bc2e300, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 161a8d857be9ed241a85384f5bc2e300, type: 3}
       propertyPath: m_TagString
@@ -3291,7 +3299,7 @@ PlayableDirector:
   m_InitialState: 1
   m_WrapMode: 2
   m_DirectorUpdateMode: 1
-  m_InitialTime: 0
+  m_InitialTime: 66
   m_SceneBindings:
   - key: {fileID: 0}
     value: {fileID: 0}
@@ -3333,14 +3341,6 @@ PlayableDirector:
     value: {fileID: 1940497084}
   - key: {fileID: 6258954994894675612, guid: e0661a3b84d13924fa7155b36757968e, type: 2}
     value: {fileID: 2120920070}
-  - key: {fileID: 6066987302510995398, guid: e0661a3b84d13924fa7155b36757968e, type: 2}
-    value: {fileID: 1136601584}
-  - key: {fileID: 5332105070972873172, guid: e0661a3b84d13924fa7155b36757968e, type: 2}
-    value: {fileID: 1418873787}
-  - key: {fileID: 6287528680645506135, guid: e0661a3b84d13924fa7155b36757968e, type: 2}
-    value: {fileID: 1897511317}
-  - key: {fileID: -6139737888384027446, guid: e0661a3b84d13924fa7155b36757968e, type: 2}
-    value: {fileID: 116396523}
   - key: {fileID: 9121310146834487684, guid: e0661a3b84d13924fa7155b36757968e, type: 2}
     value: {fileID: 1894802904}
   - key: {fileID: 5486117292043250695, guid: e0661a3b84d13924fa7155b36757968e, type: 2}
@@ -3357,6 +3357,14 @@ PlayableDirector:
     value: {fileID: 1474229930}
   - key: {fileID: -1724583616754018875, guid: e0661a3b84d13924fa7155b36757968e, type: 2}
     value: {fileID: 1322467615}
+  - key: {fileID: 2753757702502561246, guid: e0661a3b84d13924fa7155b36757968e, type: 2}
+    value: {fileID: 1136601584}
+  - key: {fileID: 999703917795982226, guid: e0661a3b84d13924fa7155b36757968e, type: 2}
+    value: {fileID: 1418873787}
+  - key: {fileID: -3352284631564830961, guid: e0661a3b84d13924fa7155b36757968e, type: 2}
+    value: {fileID: 1897511317}
+  - key: {fileID: -9132008938045309110, guid: e0661a3b84d13924fa7155b36757968e, type: 2}
+    value: {fileID: 116396523}
   m_ExposedReferences:
     m_References: []
 --- !u!1001 &1114118837
@@ -3603,13 +3611,12 @@ MonoBehaviour:
   - {x: 3, y: 0, z: 18}
   - {x: 0, y: 0, z: 18}
   - {x: 3, y: 0, z: 18}
+  - {x: 3, y: 0, z: 18}
   - {x: 0, y: 0, z: 18}
   - {x: 3, y: 0, z: 18}
-  - {x: 6, y: 0, z: 18}
   - {x: 0, y: 0, z: 18}
   - {x: 0, y: 0, z: 18}
   - {x: 0, y: 0, z: 18}
-  - {x: -6, y: 0, z: 18}
   - {x: -6, y: 0, z: 18}
   - {x: -9, y: 0, z: 18}
   - {x: -6, y: 0, z: 18}
@@ -3626,7 +3633,7 @@ MonoBehaviour:
   - {x: -3, y: 0, z: 18}
   - {x: 0, y: 0, z: 18}
   - {x: 3, y: 0, z: 18}
-  derzeitigeElement: 0
+  derzeitigeElement: 37
 --- !u!114 &1136601586
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3668,13 +3675,12 @@ MonoBehaviour:
   - {x: 3, y: 0, z: 18}
   - {x: 0, y: 0, z: 18}
   - {x: 3, y: 0, z: 18}
+  - {x: 3, y: 0, z: 18}
   - {x: 0, y: 0, z: 18}
   - {x: 3, y: 0, z: 18}
-  - {x: 6, y: 0, z: 18}
   - {x: 0, y: 0, z: 18}
   - {x: 0, y: 0, z: 18}
   - {x: 0, y: 0, z: 18}
-  - {x: -6, y: 0, z: 18}
   - {x: -6, y: 0, z: 18}
   - {x: -9, y: 0, z: 18}
   - {x: -6, y: 0, z: 18}
@@ -3691,7 +3697,7 @@ MonoBehaviour:
   - {x: -3, y: 0, z: 18}
   - {x: 0, y: 0, z: 18}
   - {x: 3, y: 0, z: 18}
-  derzeitigeElement: 0
+  derzeitigeElement: 37
 --- !u!1 &1162241877
 GameObject:
   m_ObjectHideFlags: 0
@@ -14288,7 +14294,7 @@ MonoBehaviour:
   - {x: 18, y: 0, z: -6}
   - {x: 18, y: 0, z: 6}
   - {x: 18, y: 0, z: 3}
-  derzeitigeElement: 0
+  derzeitigeElement: 13
 --- !u!114 &1418873787
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14371,7 +14377,7 @@ MonoBehaviour:
   - {x: 18, y: 0, z: -6}
   - {x: 18, y: 0, z: 6}
   - {x: 18, y: 0, z: 3}
-  derzeitigeElement: 0
+  derzeitigeElement: 13
 --- !u!1 &1474229930
 GameObject:
   m_ObjectHideFlags: 0
@@ -15657,7 +15663,6 @@ MonoBehaviour:
   - {x: 3, y: 0, z: -18}
   - {x: 6, y: 0, z: -18}
   - {x: 6, y: 0, z: -18}
-  - {x: 9, y: 0, z: -18}
   - {x: 6, y: 0, z: -18}
   - {x: 0, y: 0, z: -18}
   - {x: 9, y: 0, z: -18}
@@ -15669,7 +15674,6 @@ MonoBehaviour:
   - {x: -3, y: 0, z: -18}
   - {x: 0, y: 0, z: -18}
   - {x: -3, y: 0, z: -18}
-  - {x: -6, y: 0, z: -18}
   - {x: -3, y: 0, z: -18}
   - {x: -6, y: 0, z: -18}
   - {x: 0, y: 0, z: -18}
@@ -15681,7 +15685,7 @@ MonoBehaviour:
   - {x: -9, y: 0, z: -18}
   - {x: -6, y: 0, z: -18}
   - {x: -3, y: 0, z: -18}
-  derzeitigeElement: 0
+  derzeitigeElement: 34
 --- !u!114 &1897511317
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15765,9 +15769,8 @@ MonoBehaviour:
   - {x: 3, y: 0, z: -18}
   - {x: 6, y: 0, z: -18}
   - {x: 6, y: 0, z: -18}
-  - {x: 9, y: 0, z: -18}
   - {x: 6, y: 0, z: -18}
-  - {x: 3, y: 0, z: -18}
+  - {x: 0, y: 0, z: -18}
   - {x: 9, y: 0, z: -18}
   - {x: -3, y: 0, z: -18}
   - {x: -6, y: 0, z: -18}
@@ -15777,7 +15780,6 @@ MonoBehaviour:
   - {x: -3, y: 0, z: -18}
   - {x: 0, y: 0, z: -18}
   - {x: -3, y: 0, z: -18}
-  - {x: -6, y: 0, z: -18}
   - {x: -3, y: 0, z: -18}
   - {x: -6, y: 0, z: -18}
   - {x: 0, y: 0, z: -18}
@@ -15789,7 +15791,7 @@ MonoBehaviour:
   - {x: -9, y: 0, z: -18}
   - {x: -6, y: 0, z: -18}
   - {x: -3, y: 0, z: -18}
-  derzeitigeElement: 0
+  derzeitigeElement: 34
 --- !u!4 &1919146485 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2571162887563238658, guid: 184d73e0853ee744bac6c05c9c4b8c62, type: 3}
@@ -16533,6 +16535,6 @@ SceneRoots:
   - {fileID: 362303693}
   - {fileID: 1093506264}
   - {fileID: 523051729}
-  - {fileID: 1380110169}
   - {fileID: 571103926}
   - {fileID: 425084386}
+  - {fileID: 1380110169}
