@@ -10,9 +10,8 @@ public class BulletSpawner : MonoBehaviour
     [SerializeField] private float yRotation;
     [SerializeField] private float zRotation;
 
-
+    [SerializeField] private int derzeitigeElement = 0;
     public List<Vector3> transformList;
-    public int derzeitigeElement = 0;
     public void SpawnBullet()
     {
         if (derzeitigeElement < transformList.Count)
