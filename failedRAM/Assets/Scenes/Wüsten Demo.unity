@@ -406,11 +406,7 @@ MonoBehaviour:
   - {x: -18, y: 0, z: -3}
   - {x: -18, y: 0, z: -6}
   - {x: -18, y: 0, z: 0}
-  - {x: -18, y: 0, z: -3}
-  - {x: -18, y: 0, z: -6}
-  - {x: -18, y: 0, z: 6}
-  - {x: -18, y: 0, z: 3}
-  derzeitigeElement: 15
+  derzeitigeElement: 13
 --- !u!114 &116396523
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3693,11 +3689,13 @@ MonoBehaviour:
   - {x: -9, y: 0, z: 18}
   - {x: -3, y: 0, z: 18}
   - {x: 6, y: 0, z: 18}
-  - {x: 9, y: 0, z: 18}
-  - {x: -3, y: 0, z: 18}
-  - {x: 0, y: 0, z: 18}
-  - {x: 3, y: 0, z: 18}
-  derzeitigeElement: 37
+  - {x: 0, y: 0, z: -1.5}
+  - {x: -3, y: 0, z: -1.5}
+  - {x: -3, y: 0, z: 4.5}
+  - {x: -6, y: 0, z: 4.5}
+  - {x: 3, y: 0, z: -4.5}
+  - {x: 6, y: 0, z: -4.5}
+  derzeitigeElement: 41
 --- !u!1 &1162241877
 GameObject:
   m_ObjectHideFlags: 0
@@ -14294,7 +14292,8 @@ MonoBehaviour:
   - {x: 18, y: 0, z: -6}
   - {x: 18, y: 0, z: 6}
   - {x: 18, y: 0, z: 3}
-  derzeitigeElement: 13
+  - {x: 18, y: 0, z: 3}
+  derzeitigeElement: 15
 --- !u!114 &1418873787
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15683,9 +15682,7 @@ MonoBehaviour:
   - {x: 0, y: 0, z: -18}
   - {x: 3, y: 0, z: -18}
   - {x: -9, y: 0, z: -18}
-  - {x: -6, y: 0, z: -18}
-  - {x: -3, y: 0, z: -18}
-  derzeitigeElement: 34
+  derzeitigeElement: 35
 --- !u!114 &1897511317
 MonoBehaviour:
   m_ObjectHideFlags: 0
