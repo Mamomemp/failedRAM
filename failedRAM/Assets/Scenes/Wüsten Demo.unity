@@ -324,7 +324,6 @@ GameObject:
   - component: {fileID: 116396521}
   - component: {fileID: 116396523}
   - component: {fileID: 116396522}
-  - component: {fileID: 116396524}
   m_Layer: 10
   m_Name: Westen
   m_TagString: Untagged
@@ -381,9 +380,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPool: {fileID: 1000249264}
+  indPool: {fileID: 1919146486}
   xRotation: 0
   yRotation: 90
   zRotation: 0
+  bulletElement: 0
+  indElement: 0
+  printBullets: 0
   transformList:
   - {x: -18, y: 0, z: 6}
   - {x: -18, y: 0, z: 3}
@@ -405,7 +408,6 @@ MonoBehaviour:
   - {x: -4.5, y: 0, z: 6}
   - {x: 4.5, y: 0, z: -3}
   - {x: 4.5, y: 0, z: -6}
-  derzeitigeElement: 13
 --- !u!114 &116396523
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -427,7 +429,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 116396522}
           m_TargetAssemblyTypeName: BulletSpawner, Assembly-CSharp
-          m_MethodName: SpawnBullet
+          m_MethodName: spawnBullet
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -439,9 +441,9 @@ MonoBehaviour:
           m_CallState: 2
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 116396524}
+        - m_Target: {fileID: 116396522}
           m_TargetAssemblyTypeName: BulletSpawner, Assembly-CSharp
-          m_MethodName: SpawnBullet
+          m_MethodName: spawnInd
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -451,49 +453,6 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
---- !u!114 &116396524
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 116396519}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a649973970988b4fa0c15c03f915e64, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletPool: {fileID: 1919146486}
-  xRotation: 0
-  yRotation: 90
-  zRotation: 0
-  transformList:
-  - {x: -18, y: 0, z: 6}
-  - {x: -18, y: 0, z: 3}
-  - {x: -18, y: 0, z: 3}
-  - {x: -18, y: 0, z: 6}
-  - {x: -18, y: 0, z: 3}
-  - {x: -18, y: 0, z: 6}
-  - {x: -18, y: 0, z: 3}
-  - {x: -18, y: 0, z: 6}
-  - {x: -18, y: 0, z: 0}
-  - {x: -18, y: 0, z: -3}
-  - {x: -18, y: 0, z: -6}
-  - {x: -18, y: 0, z: -6}
-  - {x: -18, y: 0, z: 3}
-  - {x: -18, y: 0, z: 0}
-  - {x: -18, y: 0, z: 3}
-  - {x: -18, y: 0, z: -3}
-  - {x: -18, y: 0, z: -6}
-  - {x: -18, y: 0, z: 0}
-  - {x: -18, y: 0, z: -3}
-  - {x: -18, y: 0, z: -6}
-  - {x: -18, y: 0, z: 0}
-  - {x: -18, y: 0, z: -3}
-  - {x: -18, y: 0, z: -6}
-  - {x: -18, y: 0, z: 6}
-  - {x: -18, y: 0, z: 3}
-  derzeitigeElement: 15
 --- !u!1001 &128822835
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3294,7 +3253,7 @@ PlayableDirector:
   m_InitialState: 1
   m_WrapMode: 2
   m_DirectorUpdateMode: 1
-  m_InitialTime: 66
+  m_InitialTime: 0
   m_SceneBindings:
   - key: {fileID: 0}
     value: {fileID: 0}
@@ -3352,13 +3311,13 @@ PlayableDirector:
     value: {fileID: 1474229930}
   - key: {fileID: -1724583616754018875, guid: e0661a3b84d13924fa7155b36757968e, type: 2}
     value: {fileID: 1322467615}
-  - key: {fileID: 2753757702502561246, guid: e0661a3b84d13924fa7155b36757968e, type: 2}
+  - key: {fileID: -3379733809157752981, guid: e0661a3b84d13924fa7155b36757968e, type: 2}
     value: {fileID: 1136601584}
-  - key: {fileID: 999703917795982226, guid: e0661a3b84d13924fa7155b36757968e, type: 2}
+  - key: {fileID: -2908172993548079566, guid: e0661a3b84d13924fa7155b36757968e, type: 2}
     value: {fileID: 1418873787}
-  - key: {fileID: -3352284631564830961, guid: e0661a3b84d13924fa7155b36757968e, type: 2}
+  - key: {fileID: -562249158372722941, guid: e0661a3b84d13924fa7155b36757968e, type: 2}
     value: {fileID: 1897511317}
-  - key: {fileID: -9132008938045309110, guid: e0661a3b84d13924fa7155b36757968e, type: 2}
+  - key: {fileID: -3375412778727607228, guid: e0661a3b84d13924fa7155b36757968e, type: 2}
     value: {fileID: 116396523}
   m_ExposedReferences:
     m_References: []
@@ -3476,7 +3435,6 @@ GameObject:
   - component: {fileID: 1136601582}
   - component: {fileID: 1136601584}
   - component: {fileID: 1136601586}
-  - component: {fileID: 1136601585}
   m_Layer: 10
   m_Name: Norden
   m_TagString: Untagged
@@ -3541,7 +3499,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 1136601586}
           m_TargetAssemblyTypeName: BulletSpawner, Assembly-CSharp
-          m_MethodName: SpawnBullet
+          m_MethodName: spawnBullet
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -3553,9 +3511,9 @@ MonoBehaviour:
           m_CallState: 2
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1136601585}
+        - m_Target: {fileID: 1136601586}
           m_TargetAssemblyTypeName: BulletSpawner, Assembly-CSharp
-          m_MethodName: SpawnBullet
+          m_MethodName: spawnInd
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -3565,70 +3523,6 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
---- !u!114 &1136601585
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1136601580}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a649973970988b4fa0c15c03f915e64, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletPool: {fileID: 1919146486}
-  xRotation: 0
-  yRotation: 180
-  zRotation: 0
-  transformList:
-  - {x: -9, y: 0, z: 18}
-  - {x: -6, y: 0, z: 18}
-  - {x: 6, y: 0, z: 18}
-  - {x: 9, y: 0, z: 18}
-  - {x: -9, y: 0, z: 18}
-  - {x: -3, y: 0, z: 18}
-  - {x: 0, y: 0, z: 18}
-  - {x: 0, y: 0, z: 18}
-  - {x: 9, y: 0, z: 18}
-  - {x: 6, y: 0, z: 18}
-  - {x: -9, y: 0, z: 18}
-  - {x: -3, y: 0, z: 18}
-  - {x: -6, y: 0, z: 18}
-  - {x: -3, y: 0, z: 18}
-  - {x: -9, y: 0, z: 18}
-  - {x: 0, y: 0, z: 18}
-  - {x: -3, y: 0, z: 18}
-  - {x: 6, y: 0, z: 18}
-  - {x: 0, y: 0, z: 18}
-  - {x: 9, y: 0, z: 18}
-  - {x: 0, y: 0, z: 18}
-  - {x: 3, y: 0, z: 18}
-  - {x: 0, y: 0, z: 18}
-  - {x: 3, y: 0, z: 18}
-  - {x: 3, y: 0, z: 18}
-  - {x: 0, y: 0, z: 18}
-  - {x: 3, y: 0, z: 18}
-  - {x: 0, y: 0, z: 18}
-  - {x: 0, y: 0, z: 18}
-  - {x: 0, y: 0, z: 18}
-  - {x: -6, y: 0, z: 18}
-  - {x: -9, y: 0, z: 18}
-  - {x: -6, y: 0, z: 18}
-  - {x: -9, y: 0, z: 18}
-  - {x: 0, y: 0, z: 18}
-  - {x: 0, y: 0, z: 18}
-  - {x: -9, y: 0, z: 18}
-  - {x: -6, y: 0, z: 18}
-  - {x: 6, y: 0, z: 18}
-  - {x: -9, y: 0, z: 18}
-  - {x: -3, y: 0, z: 18}
-  - {x: 6, y: 0, z: 18}
-  - {x: 9, y: 0, z: 18}
-  - {x: -3, y: 0, z: 18}
-  - {x: 0, y: 0, z: 18}
-  - {x: 3, y: 0, z: 18}
-  derzeitigeElement: 37
 --- !u!114 &1136601586
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3642,9 +3536,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPool: {fileID: 1000249264}
+  indPool: {fileID: 1919146486}
   xRotation: 0
   yRotation: 180
   zRotation: 0
+  bulletElement: 0
+  indElement: 0
+  printBullets: 0
   transformList:
   - {x: -9, y: 0, z: 18}
   - {x: -6, y: 0, z: 18}
@@ -3687,14 +3585,12 @@ MonoBehaviour:
   - {x: 6, y: 0, z: 18}
   - {x: -9, y: 0, z: 18}
   - {x: -3, y: 0, z: 18}
-  - {x: 6, y: 0, z: 18}
-  - {x: 0, y: 0, z: -1.5}
   - {x: -3, y: 0, z: -1.5}
+  - {x: 0, y: 0, z: -1.5}
   - {x: -3, y: 0, z: 4.5}
   - {x: -6, y: 0, z: 4.5}
   - {x: 3, y: 0, z: -4.5}
   - {x: 6, y: 0, z: -4.5}
-  derzeitigeElement: 41
 --- !u!1 &1162241877
 GameObject:
   m_ObjectHideFlags: 0
@@ -14210,7 +14106,6 @@ GameObject:
   - component: {fileID: 1418873785}
   - component: {fileID: 1418873787}
   - component: {fileID: 1418873786}
-  - component: {fileID: 1418873788}
   m_Layer: 10
   m_Name: Osten
   m_TagString: Untagged
@@ -14267,9 +14162,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPool: {fileID: 1000249264}
+  indPool: {fileID: 1919146486}
   xRotation: 0
   yRotation: -90
   zRotation: 0
+  bulletElement: 0
+  indElement: 0
+  printBullets: 0
   transformList:
   - {x: 18, y: 0, z: -6}
   - {x: 18, y: 0, z: -3}
@@ -14286,14 +14185,12 @@ MonoBehaviour:
   - {x: 18, y: 0, z: -6}
   - {x: 18, y: 0, z: 3}
   - {x: 18, y: 0, z: -3}
-  - {x: 18, y: 0, z: 0}
   - {x: -1.5, y: 0, z: 0}
   - {x: -1.5, y: 0, z: -3}
   - {x: -4.5, y: 0, z: 6}
   - {x: -4.5, y: 0, z: 3}
   - {x: 4.5, y: 0, z: -3}
   - {x: 4.5, y: 0, z: -6}
-  derzeitigeElement: 15
 --- !u!114 &1418873787
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14315,7 +14212,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 1418873786}
           m_TargetAssemblyTypeName: BulletSpawner, Assembly-CSharp
-          m_MethodName: SpawnBullet
+          m_MethodName: spawnBullet
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -14327,9 +14224,9 @@ MonoBehaviour:
           m_CallState: 2
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1418873788}
+        - m_Target: {fileID: 1418873786}
           m_TargetAssemblyTypeName: BulletSpawner, Assembly-CSharp
-          m_MethodName: SpawnBullet
+          m_MethodName: spawnInd
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -14339,44 +14236,6 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
---- !u!114 &1418873788
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1418873783}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a649973970988b4fa0c15c03f915e64, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletPool: {fileID: 1919146486}
-  xRotation: 0
-  yRotation: -90
-  zRotation: 0
-  transformList:
-  - {x: 18, y: 0, z: -6}
-  - {x: 18, y: 0, z: -3}
-  - {x: 18, y: 0, z: -3}
-  - {x: 18, y: 0, z: -6}
-  - {x: 18, y: 0, z: -3}
-  - {x: 18, y: 0, z: -6}
-  - {x: 18, y: 0, z: 6}
-  - {x: 18, y: 0, z: 6}
-  - {x: 18, y: 0, z: 0}
-  - {x: 18, y: 0, z: 3}
-  - {x: 18, y: 0, z: 0}
-  - {x: 18, y: 0, z: -3}
-  - {x: 18, y: 0, z: -6}
-  - {x: 18, y: 0, z: 3}
-  - {x: 18, y: 0, z: -3}
-  - {x: 18, y: 0, z: 0}
-  - {x: 18, y: 0, z: -3}
-  - {x: 18, y: 0, z: -6}
-  - {x: 18, y: 0, z: 6}
-  - {x: 18, y: 0, z: 3}
-  derzeitigeElement: 13
 --- !u!1 &1474229930
 GameObject:
   m_ObjectHideFlags: 0
@@ -15580,7 +15439,6 @@ GameObject:
   - component: {fileID: 1897511315}
   - component: {fileID: 1897511317}
   - component: {fileID: 1897511316}
-  - component: {fileID: 1897511318}
   m_Layer: 10
   m_Name: "S\xFCden"
   m_TagString: Untagged
@@ -15637,9 +15495,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPool: {fileID: 1000249264}
+  indPool: {fileID: 1919146486}
   xRotation: 0
   yRotation: 0
   zRotation: 0
+  bulletElement: 0
+  indElement: 0
+  printBullets: 0
   transformList:
   - {x: 0, y: 0, z: -18}
   - {x: 3, y: 0, z: -18}
@@ -15675,15 +15537,13 @@ MonoBehaviour:
   - {x: -3, y: 0, z: -18}
   - {x: -3, y: 0, z: -18}
   - {x: -6, y: 0, z: -18}
-  - {x: 0, y: 0, z: -18}
   - {x: -6, y: 0, z: -18}
   - {x: 0, y: 0, z: -1.5}
-  - {x: 3, y: 0, z: -1.5}
-  - {x: 3, y: 0, z: 1.5}
-  - {x: 6, y: 0, z: 1.5}
-  - {x: 3, y: 0, z: -3.5}
-  - {x: 6, y: 0, z: -3.5}
-  derzeitigeElement: 35
+  - {x: -3, y: 0, z: -1.5}
+  - {x: -3, y: 0, z: 4.5}
+  - {x: -6, y: 0, z: 4.5}
+  - {x: 3, y: 0, z: -4.5}
+  - {x: 6, y: 0, z: -4.5}
 --- !u!114 &1897511317
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15705,7 +15565,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 1897511316}
           m_TargetAssemblyTypeName: BulletSpawner, Assembly-CSharp
-          m_MethodName: SpawnBullet
+          m_MethodName: spawnBullet
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -15717,9 +15577,9 @@ MonoBehaviour:
           m_CallState: 2
     - m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1897511318}
+        - m_Target: {fileID: 1897511316}
           m_TargetAssemblyTypeName: BulletSpawner, Assembly-CSharp
-          m_MethodName: SpawnBullet
+          m_MethodName: spawnInd
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -15729,67 +15589,6 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
---- !u!114 &1897511318
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1897511313}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a649973970988b4fa0c15c03f915e64, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletPool: {fileID: 1919146486}
-  xRotation: 0
-  yRotation: 0
-  zRotation: 0
-  transformList:
-  - {x: 0, y: 0, z: -18}
-  - {x: 3, y: 0, z: -18}
-  - {x: -3, y: 0, z: -18}
-  - {x: -6, y: 0, z: -18}
-  - {x: -3, y: 0, z: -18}
-  - {x: 3, y: 0, z: -18}
-  - {x: 6, y: 0, z: -18}
-  - {x: 3, y: 0, z: -18}
-  - {x: -6, y: 0, z: -18}
-  - {x: 0, y: 0, z: -18}
-  - {x: 6, y: 0, z: -18}
-  - {x: 9, y: 0, z: -18}
-  - {x: 0, y: 0, z: -18}
-  - {x: 3, y: 0, z: -18}
-  - {x: 6, y: 0, z: -18}
-  - {x: -9, y: 0, z: -18}
-  - {x: -6, y: 0, z: -18}
-  - {x: -9, y: 0, z: -18}
-  - {x: 3, y: 0, z: -18}
-  - {x: 6, y: 0, z: -18}
-  - {x: 6, y: 0, z: -18}
-  - {x: 6, y: 0, z: -18}
-  - {x: 0, y: 0, z: -18}
-  - {x: 9, y: 0, z: -18}
-  - {x: -3, y: 0, z: -18}
-  - {x: -6, y: 0, z: -18}
-  - {x: 0, y: 0, z: -18}
-  - {x: -9, y: 0, z: -18}
-  - {x: -3, y: 0, z: -18}
-  - {x: -3, y: 0, z: -18}
-  - {x: 0, y: 0, z: -18}
-  - {x: -3, y: 0, z: -18}
-  - {x: -3, y: 0, z: -18}
-  - {x: -6, y: 0, z: -18}
-  - {x: 0, y: 0, z: -18}
-  - {x: -6, y: 0, z: -18}
-  - {x: -9, y: 0, z: -18}
-  - {x: -3, y: 0, z: -18}
-  - {x: 0, y: 0, z: -18}
-  - {x: 3, y: 0, z: -18}
-  - {x: -9, y: 0, z: -18}
-  - {x: -6, y: 0, z: -18}
-  - {x: -3, y: 0, z: -18}
-  derzeitigeElement: 34
 --- !u!4 &1919146485 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2571162887563238658, guid: 184d73e0853ee744bac6c05c9c4b8c62, type: 3}
