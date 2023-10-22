@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class BulletPool : MonoBehaviour
 {
-    public GameObject bulletPrefab;
-    public int poolSize = 10;
-    public List<GameObject> bulletPool;
+    [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private int poolSize = 10;
+    [SerializeField] private List<GameObject> bulletPool;
 
+    //Erstellt eine Liste  der grose pollSize, und instansiert bulletPrefab auf alle slots der Liste.
     void Start()
     {
         bulletPool = new List<GameObject>();
@@ -20,6 +21,7 @@ public class BulletPool : MonoBehaviour
         }
     }
 
+    //gets
     public GameObject GetBullet()
     {
         foreach (GameObject bullet in bulletPool)
