@@ -1,14 +1,18 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class NEWPlayerMovement : MonoBehaviour
 {
-    public Transform target;
-    public float target_sprung_weite;
-    public float spieler_geschwindichkeit;
-    public float lauf_coldown;
-    public LayerMask barriere_Layer;
+    [SerializeField] private Transform target;
+    [SerializeField] private float target_sprung_weite;
+    [SerializeField] private float spieler_geschwindichkeit;
+    [SerializeField] private float lauf_coldown;
+    [SerializeField] private LayerMask barriere_Layer;
+    [SerializeField] private Boolean invert;
+    private float verticalInput;
+    private float horizontalInput;
 
     private bool wird_knopf_benutzt = false;
 
@@ -19,8 +23,10 @@ public class NEWPlayerMovement : MonoBehaviour
 
     private void Update() //Wird alle paar ticks aufgerufen.
     {
-        float horizontalInput = Input.GetAxisRaw("Horizontal"); //key stroke als variable speichern
-        float verticalInput = Input.GetAxisRaw("Vertical");
+       
+        horizontalInput = Input.GetAxisRaw("Horizontal"); //key stroke als variable speichern
+        verticalInput = Input.GetAxisRaw("Vertical");
+       
 
         Vector3 moveDirection = Vector3.zero; //Reseten vom moveDirection
 
@@ -31,7 +37,11 @@ public class NEWPlayerMovement : MonoBehaviour
 
         if (CanMove() && !wird_knopf_benutzt && moveDirection != Vector3.zero) //Checkt 1) Spieler entfernung zum target. 2) knopf input 3) md 0
         {
-            if (!IsObstacleInPath(moveDirection))
+            if (!IsObstacleInPath(moveDirection)&&invert)
+            {
+                target.position -= moveDirection;
+                wird_knopf_benutzt = true;
+            }else if (!IsObstacleInPath(moveDirection))
             {
                 target.position += moveDirection;
                 wird_knopf_benutzt = true;
@@ -52,6 +62,13 @@ public class NEWPlayerMovement : MonoBehaviour
 
     private bool IsObstacleInPath(Vector3 direction)
     {
-        return Physics.CheckSphere(target.position + direction, 0.5f, barriere_Layer);
-    }
+        if (invert)
+        {
+            return Physics.CheckSphere(target.position - direction, 0.5f, barriere_Layer);
+        }
+        else
+        {
+            return Physics.CheckSphere(target.position + direction, 0.5f, barriere_Layer);
+        }
+    }   
 }
