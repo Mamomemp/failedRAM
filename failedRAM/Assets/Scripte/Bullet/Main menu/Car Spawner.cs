@@ -22,7 +22,8 @@ public class CarSpawner : MonoBehaviour
         int randomCarIndex = PickRandom(carObjectList);
         int randomSpawnIndex = PickRandom(spawnPositionList);
 
-        GameObject car = Instantiate(carObjectList[randomCarIndex], spawnPositionList[randomSpawnIndex], quaternion); 
+        GameObject car = Instantiate(carObjectList[randomCarIndex], spawnPositionList[randomSpawnIndex], quaternion);
+        car.SetActive(true);
 
     }
 

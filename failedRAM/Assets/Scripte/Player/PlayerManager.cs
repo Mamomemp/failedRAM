@@ -16,9 +16,6 @@ public class PlayerManager : MonoBehaviour
     private float letzter_treffer;
 
     [SerializeField] private GameManager gameManager;
-
-    [SerializeField] CapsuleCollider[] sprung_Checker = new CapsuleCollider[4];
-
     void Start()
     {
         spieler_leben = max_spieler_leben;
@@ -52,10 +49,5 @@ public class PlayerManager : MonoBehaviour
         objektPulser.Pulse();
         spieler_leben -= damage;
         healthBar.SetHealth(spieler_leben);
-    }
-
-    private void OnTriggerEnter(Collider collider)
-    {
-       
     }
 }
