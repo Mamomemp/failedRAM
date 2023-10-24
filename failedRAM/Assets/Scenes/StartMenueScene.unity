@@ -766,8 +766,9 @@ GameObject:
   - component: {fileID: 389651693}
   - component: {fileID: 389651694}
   - component: {fileID: 389651695}
+  - component: {fileID: 389651696}
   m_Layer: 0
-  m_Name: Pivot Target und Car Spawner
+  m_Name: Pivot Target Car Spawner Game Manager
   m_TagString: schaedlich
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -823,6 +824,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameOverScreen: {fileID: 1451579945}
   winScreen: {fileID: 1845431930}
+--- !u!114 &389651696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 389651692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa985b88857129340aef0915785ea8c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &457418542
 GameObject:
   m_ObjectHideFlags: 0
@@ -1279,10 +1292,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bb63522a2755304894572223019a1f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 1219221725}
   target_sprung_weite: 1.2
   spieler_geschwindichkeit: 8
   lauf_coldown: 0.01
+  target: {fileID: 1219221725}
   barriere_Layer:
     serializedVersion: 2
     m_Bits: 1024

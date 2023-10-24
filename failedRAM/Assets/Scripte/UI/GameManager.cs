@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void Update()
+    /*public void Update()
     {
         if ( gameEnded && Input.anyKeyDown)
         {
@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
                 ReturnToLevelSelect();
             }
         }
-    }
+    }*/
 
     // Restart the current level
     public void RestartLevel()

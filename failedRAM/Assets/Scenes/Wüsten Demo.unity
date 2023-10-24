@@ -1958,13 +1958,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bb63522a2755304894572223019a1f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 372778029}
   target_sprung_weite: 3
   spieler_geschwindichkeit: 25
   lauf_coldown: 0.9
+  target: {fileID: 372778029}
   barriere_Layer:
     serializedVersion: 2
     m_Bits: 1024
+  invert: 0
 --- !u!1 &534976733
 GameObject:
   m_ObjectHideFlags: 0
@@ -2412,13 +2413,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bb63522a2755304894572223019a1f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 1639377372}
   target_sprung_weite: 3
   spieler_geschwindichkeit: 25
   lauf_coldown: 0.01
+  target: {fileID: 1639377372}
   barriere_Layer:
     serializedVersion: 2
     m_Bits: 1024
+  invert: 0
 --- !u!114 &784382276
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2438,11 +2440,6 @@ MonoBehaviour:
   dead_delay: 0.2
   grace_period: 1
   gameManager: {fileID: 1322467614}
-  sprung_Checker:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!136 &784382277
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -9157,6 +9154,7 @@ GameObject:
   - component: {fileID: 1322467613}
   - component: {fileID: 1322467614}
   - component: {fileID: 1322467615}
+  - component: {fileID: 1322467616}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -9223,6 +9221,18 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &1322467616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1322467612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa985b88857129340aef0915785ea8c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1335064997
 GameObject:
   m_ObjectHideFlags: 0

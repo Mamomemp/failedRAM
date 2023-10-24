@@ -265,9 +265,18 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
             ""id"": ""c2c7ac3d-cab0-41f9-94b1-262873d3146a"",
             ""actions"": [
                 {
-                    ""name"": ""New action"",
+                    ""name"": ""Open Level Select"",
                     ""type"": ""Button"",
                     ""id"": ""0ba49c7d-a133-42b2-a7bc-e39dae94460b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Restart Level"",
+                    ""type"": ""Button"",
+                    ""id"": ""1c80bd98-9750-4dc5-b9f7-1e8569f9ff45"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -277,12 +286,78 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
             ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""c78e6342-1d05-47fc-8a2d-8007233ab39a"",
-                    ""path"": """",
+                    ""id"": ""b2de0ded-caca-4b6d-b9e2-5d281ae4a142"",
+                    ""path"": ""<Keyboard>/escape"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""New action"",
+                    ""action"": ""Open Level Select"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""73e0aaaf-5d9e-42a8-9893-1749a6a663e4"",
+                    ""path"": ""<Keyboard>/u"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Open Level Select"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ff7a11fb-c6c8-4ca8-bb5f-7f23f9cf04bd"",
+                    ""path"": ""<HID::Controller>/button10"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Open Level Select"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""051cdd56-dba3-4286-be96-57eb2c507f44"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Restart Level"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d728b1a8-6d4c-4cf3-aa8e-48fdfc1d11ed"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Restart Level"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1e64c9a6-9936-4096-9aae-ca5887cd885d"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Restart Level"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""878b4a17-ef19-4451-8650-34a8762bdb1d"",
+                    ""path"": ""<HID::Controller>/button9"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Restart Level"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -296,7 +371,8 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
         m_Player_Movement = m_Player.FindAction("Movement", throwIfNotFound: true);
         // Menu
         m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
-        m_Menu_Newaction = m_Menu.FindAction("New action", throwIfNotFound: true);
+        m_Menu_OpenLevelSelect = m_Menu.FindAction("Open Level Select", throwIfNotFound: true);
+        m_Menu_RestartLevel = m_Menu.FindAction("Restart Level", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -404,12 +480,14 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
     // Menu
     private readonly InputActionMap m_Menu;
     private List<IMenuActions> m_MenuActionsCallbackInterfaces = new List<IMenuActions>();
-    private readonly InputAction m_Menu_Newaction;
+    private readonly InputAction m_Menu_OpenLevelSelect;
+    private readonly InputAction m_Menu_RestartLevel;
     public struct MenuActions
     {
         private @InputSystem m_Wrapper;
         public MenuActions(@InputSystem wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Newaction => m_Wrapper.m_Menu_Newaction;
+        public InputAction @OpenLevelSelect => m_Wrapper.m_Menu_OpenLevelSelect;
+        public InputAction @RestartLevel => m_Wrapper.m_Menu_RestartLevel;
         public InputActionMap Get() { return m_Wrapper.m_Menu; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -419,16 +497,22 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_MenuActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_MenuActionsCallbackInterfaces.Add(instance);
-            @Newaction.started += instance.OnNewaction;
-            @Newaction.performed += instance.OnNewaction;
-            @Newaction.canceled += instance.OnNewaction;
+            @OpenLevelSelect.started += instance.OnOpenLevelSelect;
+            @OpenLevelSelect.performed += instance.OnOpenLevelSelect;
+            @OpenLevelSelect.canceled += instance.OnOpenLevelSelect;
+            @RestartLevel.started += instance.OnRestartLevel;
+            @RestartLevel.performed += instance.OnRestartLevel;
+            @RestartLevel.canceled += instance.OnRestartLevel;
         }
 
         private void UnregisterCallbacks(IMenuActions instance)
         {
-            @Newaction.started -= instance.OnNewaction;
-            @Newaction.performed -= instance.OnNewaction;
-            @Newaction.canceled -= instance.OnNewaction;
+            @OpenLevelSelect.started -= instance.OnOpenLevelSelect;
+            @OpenLevelSelect.performed -= instance.OnOpenLevelSelect;
+            @OpenLevelSelect.canceled -= instance.OnOpenLevelSelect;
+            @RestartLevel.started -= instance.OnRestartLevel;
+            @RestartLevel.performed -= instance.OnRestartLevel;
+            @RestartLevel.canceled -= instance.OnRestartLevel;
         }
 
         public void RemoveCallbacks(IMenuActions instance)
@@ -452,6 +536,7 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
     }
     public interface IMenuActions
     {
-        void OnNewaction(InputAction.CallbackContext context);
+        void OnOpenLevelSelect(InputAction.CallbackContext context);
+        void OnRestartLevel(InputAction.CallbackContext context);
     }
 }
