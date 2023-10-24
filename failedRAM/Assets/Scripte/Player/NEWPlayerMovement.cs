@@ -1,58 +1,90 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class NEWPlayerMovement : MonoBehaviour
 {
-    [SerializeField] private Transform target;
     [SerializeField] private float target_sprung_weite;
     [SerializeField] private float spieler_geschwindichkeit;
     [SerializeField] private float lauf_coldown;
-    [SerializeField] private LayerMask barriere_Layer;
-    [SerializeField] private Boolean invert;
-    private float verticalInput;
-    private float horizontalInput;
+    private Vector2 moveInput;
 
+    [SerializeField] private Transform target;
+    [SerializeField] private LayerMask barriere_Layer;
+
+    [SerializeField] private bool invert;
     private bool wird_knopf_benutzt = false;
+
+    private InputSystem inputSystem;
+
+    private void Awake()
+    {
+        inputSystem = new InputSystem();
+    }
+
+    private void OnEnable()
+    {
+        inputSystem.Player.Enable();
+        inputSystem.Player.Movement.performed += OnMovementPerformed;
+        inputSystem.Player.Movement.canceled += OnMovementCanceled;
+    }
+
+    private void OnDisable()
+    {
+        inputSystem.Player.Disable();
+        inputSystem.Player.Movement.performed -= OnMovementPerformed;
+        inputSystem.Player.Movement.canceled -= OnMovementCanceled;
+    }
 
     private void Start()
     {
-        target.parent = null; //Entfernt den Spieler-Objekt als parent das moving target.
+        target.parent = null; // Remove the player object as the parent of the moving target.
     }
 
-    private void Update() //Wird alle paar ticks aufgerufen.
+    private void Update()
     {
-       
-        horizontalInput = Input.GetAxisRaw("Horizontal"); //key stroke als variable speichern
-        verticalInput = Input.GetAxisRaw("Vertical");
-       
+        Vector3 moveDirection = Vector3.zero; // Reset moveDirection.
 
-        Vector3 moveDirection = Vector3.zero; //Reseten vom moveDirection
-
-        if (Mathf.Abs(horizontalInput) == 1 ^ Mathf.Abs(verticalInput) == 1) //Checkt ob Horizentale oder Verticale knopf gedrückt wird-    CHANGE ^ to get diagonall movement
+        if (moveInput != Vector2.zero)
         {
-            moveDirection = new Vector3(horizontalInput * target_sprung_weite, 0f, verticalInput * target_sprung_weite); //Setzt den input richtung + den multiplikator(sprung weite) als moveDirection.
+            moveDirection = new Vector3(moveInput.x * target_sprung_weite, 0f, moveInput.y * target_sprung_weite);
         }
 
-        if (CanMove() && !wird_knopf_benutzt && moveDirection != Vector3.zero) //Checkt 1) Spieler entfernung zum target. 2) knopf input 3) md 0
+        if (CanMove() && !wird_knopf_benutzt && moveDirection != Vector3.zero)
         {
-            if (!IsObstacleInPath(moveDirection)&&invert)
+            if (!IsObstacleInPath(moveDirection) && invert)
             {
                 target.position -= moveDirection;
                 wird_knopf_benutzt = true;
-            }else if (!IsObstacleInPath(moveDirection))
+            }
+            else if (!IsObstacleInPath(moveDirection))
             {
                 target.position += moveDirection;
                 wird_knopf_benutzt = true;
             }
         }
-        else if ((Mathf.Abs(verticalInput) == 0 && Mathf.Abs(horizontalInput) == 0) || (Vector3.Distance(transform.position, target.position) <= lauf_coldown)) //Bestimmt wann der der keydruck nichtmehr als druck angesehen. 
+        else if (moveInput == Vector2.zero || Vector3.Distance(transform.position, target.position) <= lauf_coldown)
         {
             wird_knopf_benutzt = false;
         }
 
-        transform.position = Vector3.MoveTowards(transform.position, target.position, spieler_geschwindichkeit * Time.deltaTime); //bewegt den Spieler zum target
+        transform.position = Vector3.MoveTowards(transform.position, target.position, spieler_geschwindichkeit * Time.deltaTime);
+    }
+
+    private void OnMovementPerformed(InputAction.CallbackContext context)
+    {
+        moveInput = context.ReadValue<Vector2>();
+
+        // Disable diagonal movement
+        if (Mathf.Abs(moveInput.x) > 0 && Mathf.Abs(moveInput.y) > 0)
+        {
+            moveInput = Vector2.zero;
+        }
+    }
+
+    private void OnMovementCanceled(InputAction.CallbackContext context)
+    {
+        moveInput = Vector2.zero;
     }
 
     private bool CanMove()
@@ -70,5 +102,5 @@ public class NEWPlayerMovement : MonoBehaviour
         {
             return Physics.CheckSphere(target.position + direction, 0.5f, barriere_Layer);
         }
-    }   
+    }
 }
