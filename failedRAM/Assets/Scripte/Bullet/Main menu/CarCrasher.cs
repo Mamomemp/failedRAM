@@ -23,15 +23,8 @@ public class CarCrasher : MonoBehaviour
         }
         else if (collision.gameObject.CompareTag("Delete_Projektile"))
         {
-            // Speichere die Position des zerstörten Objekts
-            Vector3 spawnPosition = gameObject.transform.position;
 
             Destroy(gameObject); // Zerstört das aktuelle Objekt, an dem dieses Skript angebracht ist
-
-            // Instanziere ein neues Partikelsystem-Prefab an der gespeicherten Position
-            GameObject explosion = Instantiate(explosionPrefab, spawnPosition, Quaternion.identity);
-            // Zerstöre das Partikelsystem nach einer bestimmten Zeit (z. B. Dauer der Partikel)
-            Destroy(explosion, explosion.GetComponent<ParticleSystem>().main.duration);
         }
     }
 }
