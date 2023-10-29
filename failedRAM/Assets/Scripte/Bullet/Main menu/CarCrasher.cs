@@ -4,27 +4,40 @@ using UnityEngine;
 
 public class CarCrasher : MonoBehaviour
 {
-    public GameObject explosionPrefab; // Das Prefab des Partikelsystems
+    [SerializeField] private GameObject explosionPrefab;
+    [SerializeField] private bool toCollect;
 
+    private float speed = 1.5f;
     private void OnCollisionEnter(Collision collision)
     {
+        Vector3 spawnPosition = collision.gameObject.transform.position;
+
         if (collision.gameObject.CompareTag("schaedlich"))
         {
-            // Speichere die Position des zerstörten Objekts
-            Vector3 spawnPosition = collision.gameObject.transform.position;
+            Destroy(collision.gameObject); 
+            Destroy(gameObject);
 
-            Destroy(collision.gameObject); // Zerstört das kollidierende Objekt
-            Destroy(gameObject); // Zerstört das aktuelle Objekt, an dem dieses Skript angebracht ist
-
-            // Instanziere ein neues Partikelsystem-Prefab an der gespeicherten Position
             GameObject explosion = Instantiate(explosionPrefab, spawnPosition, Quaternion.identity);
-            // Zerstöre das Partikelsystem nach einer bestimmten Zeit (z. B. Dauer der Partikel)
             Destroy(explosion, explosion.GetComponent<ParticleSystem>().main.duration);
+        }
+        else if (collision.gameObject.CompareTag("Player") && toCollect == true)
+        {
+            GameObject collection = Instantiate(explosionPrefab, spawnPosition, Quaternion.identity);
+            collection.GetComponent<ParticleSystem>().GetComponent<Renderer>().material.color = Color.cyan; //Set color to green
+            
+            //Makes the particleSystem quicker
+            ParticleSystem particleSystem = collection.GetComponent<ParticleSystem>();
+            var main = particleSystem.main;
+            main.startSpeed = new ParticleSystem.MinMaxCurve(speed);
+
+            
+            Destroy(collection, collection.GetComponent<ParticleSystem>().main.duration);
+            Destroy(gameObject);
         }
         else if (collision.gameObject.CompareTag("Delete_Projektile"))
         {
 
-            Destroy(gameObject); // Zerstört das aktuelle Objekt, an dem dieses Skript angebracht ist
+            Destroy(gameObject);
         }
     }
 }

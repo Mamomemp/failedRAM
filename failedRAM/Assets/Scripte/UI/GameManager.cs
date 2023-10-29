@@ -5,14 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField]
-    private GameOverScreen gameOverScreen;
-    [SerializeField]
-    private WinScreen winScreen;
+    [SerializeField] private GameOverScreen gameOverScreen;
+    [SerializeField] private WinScreen winScreen;
+
+    [SerializeField] private int needToWin;
+    private int intToWin = 0;
 
     private bool gameEnded = false;
 
-    // Call this method when the player wins the game
+    #region win/lose methoden
     public void WinGame()
     {
         if (!gameEnded)
@@ -21,8 +22,7 @@ public class GameManager : MonoBehaviour
             winScreen.WinScreen_toggle();
         }
     }
-
-    // Call this method when the player loses the game
+     
     public void LoseGame()
     {
         if (!gameEnded)
@@ -31,34 +31,28 @@ public class GameManager : MonoBehaviour
             gameOverScreen.GameOverScreen_toggle();
         }
     }
+    #endregion
 
-    /*public void Update()
-    {
-        if ( gameEnded && Input.anyKeyDown)
-        {
-            // Wenn der Spieler eine Taste drückt (außer r), lade die aktuelle Szene neu
-            if (Input.GetKeyDown(KeyCode.R))
-            {
-                RestartLevel();
-            }
-            // Wenn der Spieler die -Taste drückt, lade die Szene des Hauptmenüs
-            else
-            {
-                ReturnToLevelSelect();
-            }
-        }
-    }*/
-
-    // Restart the current level
+    #region Level load methods
     public void RestartLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
-    // Return to the level selection scene
     public void ReturnToLevelSelect()
     {
         SceneManager.LoadScene("LevelSelectScene");
     }
+    #endregion
+
+    #region counting methodes
+    public void counter_IntToWin()
+    {
+        if (intToWin >= needToWin)
+        {
+            WinGame();
+        }else { intToWin++; }
+    }
+    #endregion
 }
 
