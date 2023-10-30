@@ -54,5 +54,6 @@ public class GameManager : MonoBehaviour
         }else { intToWin++; }
     }
     #endregion
+    public int getNeedToWin() {return intToWin;}
 }
 
