@@ -47,8 +47,6 @@ public class BulletSpawner : MonoBehaviour
         else
         {
            // derzeitigeElement = 0;
-       
-           
         }
 
         GameObject bullet = bP.GetBullet();

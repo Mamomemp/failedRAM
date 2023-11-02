@@ -135,6 +135,10 @@ PrefabInstance:
       propertyPath: toCollect
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 179433008261607670, guid: d570bbfaee880ec4f909a5c5a88a01b3, type: 3}
+      propertyPath: gamemanager
+      value: 
+      objectReference: {fileID: 389651695}
     - target: {fileID: 4915281072026342067, guid: d570bbfaee880ec4f909a5c5a88a01b3, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -1760,6 +1764,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosionPrefab: {fileID: 8992642770905472109, guid: c7fe515727d20a74a82fbd545a65b33c, type: 3}
   toCollect: 0
+  gamemanager: {fileID: 0}
 --- !u!1001 &1332003373
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2868,6 +2873,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosionPrefab: {fileID: 8992642770905472109, guid: c7fe515727d20a74a82fbd545a65b33c, type: 3}
   toCollect: 0
+  gamemanager: {fileID: 0}
 --- !u!1 &1662323898
 GameObject:
   m_ObjectHideFlags: 0
@@ -3166,6 +3172,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosionPrefab: {fileID: 8992642770905472109, guid: c7fe515727d20a74a82fbd545a65b33c, type: 3}
   toCollect: 0
+  gamemanager: {fileID: 0}
 --- !u!1001 &1921444457
 PrefabInstance:
   m_ObjectHideFlags: 0
