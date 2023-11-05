@@ -29,7 +29,7 @@ public class CarCrasher : MonoBehaviour
             GameObject explosion = Instantiate(explosionPrefab, spawnPosition, Quaternion.identity);
             Destroy(explosion, explosion.GetComponent<ParticleSystem>().main.duration);
         }
-        else if (collision.gameObject.CompareTag("Player") && toCollect == true)
+        else if (collision.gameObject.CompareTag("Player") && toCollect == true) // COllectables
         {
             GameObject collection = Instantiate(explosionPrefab, spawnPosition, Quaternion.identity);
             collection.GetComponent<ParticleSystem>().GetComponent<Renderer>().material.color = Color.cyan; //Set color to green
@@ -43,6 +43,7 @@ public class CarCrasher : MonoBehaviour
             Destroy(collection, collection.GetComponent<ParticleSystem>().main.duration);
             Destroy(gameObject);
             gamemanager.counter_IntToWin();
+
         }
         else if (collision.gameObject.CompareTag("Delete_Projektile"))
         {
