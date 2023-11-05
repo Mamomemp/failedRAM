@@ -22,6 +22,7 @@ public class pausemanager : MonoBehaviour
         // Konfiguriere die Hintergrundmusik
         backgroundAudioSource.clip = backgroundMusic;
         backgroundAudioSource.loop = true;
+        pauseAudioSource.loop = true;
         backgroundAudioSource.Play();
 
         pausePanel.SetActive(false);
