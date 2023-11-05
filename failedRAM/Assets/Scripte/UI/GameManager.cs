@@ -59,6 +59,7 @@ public class GameManager : MonoBehaviour
         else { intToWin++; }
     }
     #endregion
+    public int getNeedToWin() {return intToWin;}
     public void Exit()
     {
 #if UNITY_EDITOR
