@@ -24,7 +24,7 @@ public class CarCrasher : MonoBehaviour
         if (collision.gameObject.CompareTag("schaedlich"))
         {
             Destroy(collision.gameObject); 
-            Destroy(gameObject);
+            Destroy(transform.parent.gameObject);
 
             GameObject explosion = Instantiate(explosionPrefab, spawnPosition, Quaternion.identity);
             Destroy(explosion, explosion.GetComponent<ParticleSystem>().main.duration);
@@ -41,7 +41,7 @@ public class CarCrasher : MonoBehaviour
 
             
             Destroy(collection, collection.GetComponent<ParticleSystem>().main.duration);
-            Destroy(gameObject);
+            Destroy(transform.parent.gameObject);
             gamemanager.counter_IntToWin();
 
         }
