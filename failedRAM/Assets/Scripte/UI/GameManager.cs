@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] private UnlockLevel unlockLevel;
     [SerializeField] private GameOverScreen gameOverScreen;
     [SerializeField] private WinScreen winScreen;
 
@@ -13,7 +14,17 @@ public class GameManager : MonoBehaviour
 
     private bool gameEnded = false;
 
-    #region win/lose methoden
+    #region Awake
+    private void Awake()
+    {
+        if (unlockLevel == null)
+        {
+            unlockLevel = new UnlockLevel();
+        }
+    }
+    #endregion
+
+    #region win/lose methods
     public void WinGame()
     {
         if (!gameEnded)
@@ -54,13 +65,15 @@ public class GameManager : MonoBehaviour
     {
         if (intToWin >= needToWin)
         {
+            unlockLevel.Unlock();
             WinGame();
         }
         else { intToWin++; }
     }
     #endregion
     public int getNeedToWin() {return intToWin;}
-    public void Exit()
+
+public void Exit()
     {
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;

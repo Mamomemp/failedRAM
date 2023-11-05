@@ -6,8 +6,17 @@ public class CarCrasher : MonoBehaviour
 {
     [SerializeField] private GameObject explosionPrefab;
     [SerializeField] private bool toCollect;
+    [SerializeField] private GameManager gamemanager;
 
     private float speed = 1.5f;
+
+    private void Awake()
+    {
+        if(gamemanager == null)
+        {
+            gamemanager = new GameManager();
+        }
+    }
     private void OnCollisionEnter(Collision collision)
     {
         Vector3 spawnPosition = collision.gameObject.transform.position;
@@ -20,7 +29,7 @@ public class CarCrasher : MonoBehaviour
             GameObject explosion = Instantiate(explosionPrefab, spawnPosition, Quaternion.identity);
             Destroy(explosion, explosion.GetComponent<ParticleSystem>().main.duration);
         }
-        else if (collision.gameObject.CompareTag("Player") && toCollect == true)
+        else if (collision.gameObject.CompareTag("Player") && toCollect == true) // COllectables
         {
             GameObject collection = Instantiate(explosionPrefab, spawnPosition, Quaternion.identity);
             collection.GetComponent<ParticleSystem>().GetComponent<Renderer>().material.color = Color.cyan; //Set color to green
@@ -33,6 +42,7 @@ public class CarCrasher : MonoBehaviour
             
             Destroy(collection, collection.GetComponent<ParticleSystem>().main.duration);
             Destroy(transform.parent.gameObject);
+            gamemanager.counter_IntToWin();
         }
         else if (collision.gameObject.CompareTag("Delete_Projektile"))
         {

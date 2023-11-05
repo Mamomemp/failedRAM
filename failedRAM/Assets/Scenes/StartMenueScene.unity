@@ -135,6 +135,10 @@ PrefabInstance:
       propertyPath: toCollect
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 179433008261607670, guid: d570bbfaee880ec4f909a5c5a88a01b3, type: 3}
+      propertyPath: gamemanager
+      value: 
+      objectReference: {fileID: 389651695}
     - target: {fileID: 4915281072026342067, guid: d570bbfaee880ec4f909a5c5a88a01b3, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -961,6 +965,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23cc8868ed5c8334dbb5e039736a2fa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unlockLevel: {fileID: 11400000, guid: cb4010a4979ac4a4fb25746d1b0eb15b, type: 2}
   gameOverScreen: {fileID: 1451579945}
   winScreen: {fileID: 1845431930}
   needToWin: 1
@@ -2059,6 +2064,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosionPrefab: {fileID: 8992642770905472109, guid: c7fe515727d20a74a82fbd545a65b33c, type: 3}
   toCollect: 0
+  gamemanager: {fileID: 0}
 --- !u!1001 &1332003373
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3172,6 +3178,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosionPrefab: {fileID: 8992642770905472109, guid: c7fe515727d20a74a82fbd545a65b33c, type: 3}
   toCollect: 0
+  gamemanager: {fileID: 0}
 --- !u!1 &1662323898
 GameObject:
   m_ObjectHideFlags: 0
@@ -3619,6 +3626,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosionPrefab: {fileID: 8992642770905472109, guid: c7fe515727d20a74a82fbd545a65b33c, type: 3}
   toCollect: 0
+  gamemanager: {fileID: 0}
 --- !u!1001 &1921444457
 PrefabInstance:
   m_ObjectHideFlags: 0
