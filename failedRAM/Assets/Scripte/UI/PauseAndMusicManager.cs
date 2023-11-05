@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,7 +8,8 @@ public class pausemanager : MonoBehaviour
 {
     public AudioClip backgroundMusic; 
     public AudioClip pauseMusic; 
-    public GameObject pausePanel; 
+    public GameObject pausePanel;
+    public GameObject VendingMachine;
 
     private AudioSource backgroundAudioSource; 
     private AudioSource pauseAudioSource; 
@@ -26,6 +28,8 @@ public class pausemanager : MonoBehaviour
         backgroundAudioSource.Play();
 
         pausePanel.SetActive(false);
+        VendingMachine.SetActive(false);
+
     }
 
     void Update()
@@ -38,7 +42,8 @@ public class pausemanager : MonoBehaviour
                 Time.timeScale = 1f; // Setze das Spiel fort
                 backgroundAudioSource.UnPause(); 
                 pauseAudioSource.Stop(); 
-                pausePanel.SetActive(false); 
+                pausePanel.SetActive(false);
+                VendingMachine.SetActive(false);
                 isPaused = false; 
             }
             else
@@ -47,7 +52,8 @@ public class pausemanager : MonoBehaviour
                 backgroundAudioSource.Pause(); 
                 pauseAudioSource.clip = pauseMusic; 
                 pauseAudioSource.Play(); 
-                pausePanel.SetActive(true); 
+                pausePanel.SetActive(true);
+                VendingMachine.SetActive(true);
                 isPaused = true; 
             }
         }
