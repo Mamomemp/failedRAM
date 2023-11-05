@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
             winScreen.WinScreen_toggle();
         }
     }
-     
+
     public void LoseGame()
     {
         if (!gameEnded)
@@ -48,11 +48,15 @@ public class GameManager : MonoBehaviour
     public void RestartLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Time.timeScale = 1f;
+
     }
 
     public void ReturnToLevelSelect()
     {
         SceneManager.LoadScene("LevelSelectScene");
+        Time.timeScale = 1f;
+
     }
     #endregion
 
@@ -63,11 +67,13 @@ public class GameManager : MonoBehaviour
         {
             unlockLevel.Unlock();
             WinGame();
-        }else { intToWin++; }
+        }
+        else { intToWin++; }
     }
     #endregion
     public int getNeedToWin() {return intToWin;}
-        public void Exit()
+
+public void Exit()
     {
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
@@ -76,4 +82,3 @@ public class GameManager : MonoBehaviour
 #endif
     }
 }
-

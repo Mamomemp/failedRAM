@@ -43,12 +43,11 @@ public class CarCrasher : MonoBehaviour
             Destroy(collection, collection.GetComponent<ParticleSystem>().main.duration);
             Destroy(transform.parent.gameObject);
             gamemanager.counter_IntToWin();
-
         }
         else if (collision.gameObject.CompareTag("Delete_Projektile"))
         {
 
-            Destroy(gameObject);
+            Destroy(transform.parent.gameObject);
         }
     }
 }
