@@ -67,5 +67,13 @@ public class GameManager : MonoBehaviour
     }
     #endregion
     public int getNeedToWin() {return intToWin;}
+        public void Exit()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+                Application.Quit();
+#endif
+    }
 }
 
