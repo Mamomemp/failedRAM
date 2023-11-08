@@ -16,7 +16,6 @@ public class LevelSelect : MonoBehaviour
     [SerializeField] int gewuenschte_level_Index;
     
     private bool ist_Settings_offen = false;
-    private bool wird_knopf_benutzt = false;
     private void Start()
     {
         target.parent = null;
@@ -26,39 +25,10 @@ public class LevelSelect : MonoBehaviour
     }
 
     private void Update()
-    {
-
-        //Bewegung
-        transform.position = Vector3.MoveTowards(transform.position, target.position, spieler_geschwindichkeit * Time.deltaTime);
-
-        //Cooldown 
-        if (Vector3.Distance(transform.position, target.position) <= lauf_coldown)
-        {
-            if (Input.GetAxisRaw("Vertical") != 0)
-            {
-                if (wird_knopf_benutzt == false)
-                {
-                    wird_knopf_benutzt = true;
-
-                    //Um quer movement zu stoppen muss man else if machen 
-                    if (Mathf.Abs(Input.GetAxisRaw("Vertical")) == 1)
-                    {
-                        if (!Physics.CheckSphere(target.position + new Vector3(0f, 0f, Input.GetAxisRaw("Vertical") * target_sprung_weite), .2f, barriere_Layer))
-                        {
-                            float temp = Input.GetAxisRaw("Vertical");
-                            gewuenschte_level_Index += (int)Mathf.Sign(temp);
-                            target.position += new Vector3(0f, 0f, Input.GetAxisRaw("Vertical") * target_sprung_weite);
-                        }
-                    }
-
-                }
-
-            }
-            else
-            {
-                wird_knopf_benutzt = false;
-            }
-        }       
+    {      
+        float temp = Input.GetAxisRaw("Vertical");
+        gewuenschte_level_Index += (int)Mathf.Sign(temp);
+        target.position += new Vector3(0f, 0f, Input.GetAxisRaw("Vertical") * target_sprung_weite);
     }
     private void Level_starten()
     {

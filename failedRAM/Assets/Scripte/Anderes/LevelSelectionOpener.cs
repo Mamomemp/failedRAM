@@ -13,11 +13,6 @@ public class LevelSelectionUndRestartLogic : MonoBehaviour
         inputSystem = new InputSystem();
 
         // If the GameManager component is not found, add one to the GameObject
-        if (gameManager == null)
-        {
-            gameManager = gameObject.AddComponent<GameManager>();
-        }
-
         gameManager = gameObject.GetComponent<GameManager>();        
     }
 
