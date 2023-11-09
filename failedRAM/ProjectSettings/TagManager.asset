@@ -8,6 +8,7 @@ TagManager:
   - Indikator_aktivierer
   - Delete_Projektile
   - Arrow
+  - Counter
   layers:
   - Default
   - TransparentFX
