@@ -253,50 +253,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &296050072
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 296050074}
-  - component: {fileID: 296050073}
-  m_Layer: 0
-  m_Name: LevelSelectFehlerIberBrpckung
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &296050073
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 296050072}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9eaa14f641118dd479b9f0cc50073a74, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &296050074
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 296050072}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.7272544, y: -1.9585514, z: 3.778045}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &353699293
 GameObject:
   m_ObjectHideFlags: 0
@@ -591,8 +547,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 343fa1f01def2954e827984db48fd6b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelSelect_Index: 0
-  gewuenschte_level_Index: 0
+  levelSelect_Index: 
+  gewuenschte_level_Index: 
 --- !u!65 &677753836
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1403,7 +1359,7 @@ GameObject:
   - component: {fileID: 1305632062}
   - component: {fileID: 1305632064}
   m_Layer: 0
-  m_Name: Counter Fabric
+  m_Name: RoboLevel
   m_TagString: Counter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2014,7 +1970,7 @@ GameObject:
   - component: {fileID: 1786771300}
   - component: {fileID: 1786771302}
   m_Layer: 0
-  m_Name: Counter Secret ???
+  m_Name: SampleScene
   m_TagString: Counter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2095,7 +2051,7 @@ GameObject:
   - component: {fileID: 1842673210}
   - component: {fileID: 1842673212}
   m_Layer: 0
-  m_Name: Counter Level Select ???
+  m_Name: LevelSelectScene
   m_TagString: Counter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2176,7 +2132,7 @@ GameObject:
   - component: {fileID: 1850201213}
   - component: {fileID: 1850201215}
   m_Layer: 0
-  m_Name: Counter Wueste
+  m_Name: "W\xFCsten Demo"
   m_TagString: Counter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2469,7 +2425,7 @@ GameObject:
   - component: {fileID: 2013642768}
   - component: {fileID: 2013642770}
   m_Layer: 0
-  m_Name: Counter Start menu
+  m_Name: StartMenuScene
   m_TagString: Counter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5549,4 +5505,3 @@ SceneRoots:
   - {fileID: 8166799384565711865}
   - {fileID: 677753834}
   - {fileID: 12136598}
-  - {fileID: 296050074}
