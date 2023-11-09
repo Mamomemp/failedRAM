@@ -7,7 +7,7 @@ public class NEWPlayerMovement : MonoBehaviour
     [SerializeField] private float target_sprung_weite;
     [SerializeField] private float spieler_geschwindichkeit;
     [SerializeField] private float lauf_coldown;
-    [SerializeField] private float check_size = 5f;
+    [SerializeField] private float check_size = 0.5f;
     private Vector2 moveInput;
 
     [SerializeField] private Transform target;
