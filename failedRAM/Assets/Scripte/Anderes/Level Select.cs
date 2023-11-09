@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class LevelSelect : MonoBehaviour
 {
-    [SerializeField] int levelSelect_Index;
-    [SerializeField] int gewuenschte_level_Index;
+    [SerializeField] string levelSelect_Index;
+    [SerializeField] string gewuenschte_level_Index;
 
    // private bool ist_Settings_offen = false; // Wip
     private InputSystem inputSystem;
@@ -17,7 +17,7 @@ public class LevelSelect : MonoBehaviour
     private void Awake()
     {
         inputSystem = new InputSystem();
-        levelSelect_Index = SceneManager.GetActiveScene().buildIndex;
+        levelSelect_Index = SceneManager.GetActiveScene().name;
         gewuenschte_level_Index = levelSelect_Index;
     }
 
@@ -56,13 +56,9 @@ public class LevelSelect : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (moveInput.y > 1 && collision.gameObject.CompareTag("Counter"))
+        if (collision.gameObject.CompareTag("Counter"))
         {
-            gewuenschte_level_Index--;
-        }
-        if (moveInput.y > -1 && collision.gameObject.CompareTag("Counter"))
-        {
-            gewuenschte_level_Index++;
+            gewuenschte_level_Index = collision.gameObject.name;
         }
     }
 
