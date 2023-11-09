@@ -14,16 +14,6 @@ public class GameManager : MonoBehaviour
 
     private bool gameEnded = false;
 
-    #region Awake
-    private void Awake()
-    {
-        if (unlockLevel == null)
-        {
-            unlockLevel = new UnlockLevel();
-        }
-    }
-    #endregion
-
     #region win/lose methods
     public void WinGame()
     {
@@ -69,11 +59,12 @@ public class GameManager : MonoBehaviour
             WinGame();
         }
         else { intToWin++; }
-    }
-    #endregion
+    }    
     public int getNeedToWin() {return intToWin;}
+    #endregion
 
-public void Exit()
+    #region Exit Methode
+    public void Exit()
     {
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
@@ -81,4 +72,5 @@ public void Exit()
                 Application.Quit();
 #endif
     }
+    #endregion
 }

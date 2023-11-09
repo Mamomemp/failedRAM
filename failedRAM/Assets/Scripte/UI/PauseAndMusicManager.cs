@@ -16,6 +16,14 @@ public class pausemanager : MonoBehaviour
 
     private bool isPaused = false;
 
+    private void Awake()
+    {
+        if (VendingMachine == null)
+        {
+            VendingMachine = new GameObject();
+        }
+    }
+
     void Start()
     {
         backgroundAudioSource = gameObject.AddComponent<AudioSource>();

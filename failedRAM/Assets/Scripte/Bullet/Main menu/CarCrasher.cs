@@ -10,13 +10,6 @@ public class CarCrasher : MonoBehaviour
 
     private float speed = 1.5f;
 
-    private void Awake()
-    {
-        if(gamemanager == null)
-        {
-            gamemanager = new GameManager();
-        }
-    }
     private void OnCollisionEnter(Collision collision)
     {
         Vector3 spawnPosition = collision.gameObject.transform.position;
