@@ -75,4 +75,9 @@ public class RandomObjectSpawner : MonoBehaviour
         int randomIndex = Random.Range(0, list.Count);
         return randomIndex;
     }
+
+    public void SetStartSpawingFalse()
+    {
+        startSpawning = false;
+    }
 }

@@ -16,31 +16,40 @@ public class CarCrasher : MonoBehaviour
 
         if (collision.gameObject.CompareTag("schaedlich"))
         {
-            Destroy(collision.gameObject); 
-            Destroy(transform.parent.gameObject);
-
-            GameObject explosion = Instantiate(explosionPrefab, spawnPosition, Quaternion.identity);
-            Destroy(explosion, explosion.GetComponent<ParticleSystem>().main.duration);
+            CrashCar(collision, spawnPosition);
         }
         else if (collision.gameObject.CompareTag("Player") && toCollect == true) // COllectables
         {
-            GameObject collection = Instantiate(explosionPrefab, spawnPosition, Quaternion.identity);
-            collection.GetComponent<ParticleSystem>().GetComponent<Renderer>().material.color = Color.cyan; //Set color to green
-            
-            //Makes the particleSystem quicker
-            ParticleSystem particleSystem = collection.GetComponent<ParticleSystem>();
-            var main = particleSystem.main;
-            main.startSpeed = new ParticleSystem.MinMaxCurve(speed);
-
-            
-            Destroy(collection, collection.GetComponent<ParticleSystem>().main.duration);
-            Destroy(transform.parent.gameObject);
-            gamemanager.counter_IntToWin();
+            CollectTaco(collision, spawnPosition);
         }
         else if (collision.gameObject.CompareTag("Delete_Projektile"))
         {
-
             Destroy(transform.parent.gameObject);
         }
+    }
+
+    private void CrashCar(Collision collision, Vector3 spawnPosition)
+    {
+        Destroy(collision.gameObject);
+        Destroy(transform.parent.gameObject);
+
+        GameObject explosion = Instantiate(explosionPrefab, spawnPosition, Quaternion.identity);
+        Destroy(explosion, explosion.GetComponent<ParticleSystem>().main.duration);
+    }
+
+    private void CollectTaco(Collision collision, Vector3 spawnPosition)
+    {
+        GameObject collection = Instantiate(explosionPrefab, spawnPosition, Quaternion.identity);
+        collection.GetComponent<ParticleSystem>().GetComponent<Renderer>().material.color = Color.cyan; //Set color to green
+
+        //Makes the particleSystem quicker
+        ParticleSystem particleSystem = collection.GetComponent<ParticleSystem>();
+        var main = particleSystem.main;
+        main.startSpeed = new ParticleSystem.MinMaxCurve(speed);
+
+
+        Destroy(collection, collection.GetComponent<ParticleSystem>().main.duration);
+        Destroy(transform.parent.gameObject);
+        gamemanager.counter_IntToWin();
     }
 }
