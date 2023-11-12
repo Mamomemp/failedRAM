@@ -11,7 +11,7 @@ public class PercentagePositioning : MonoBehaviour
     [SerializeField] private float heightPercentage; // Höhe in Prozent
 
     private RectTransform uiElementRect;
-    [SerializeField] private RectTransform canvasRect;
+    private RectTransform canvasRect;
 
     private void OnEnable()
     {

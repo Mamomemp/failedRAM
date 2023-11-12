@@ -1049,7 +1049,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 297, y: -167}
+  m_AnchoredPosition: {x: 405, y: -228}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &215256094
@@ -9473,10 +9473,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 3815384738326373314}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 529, y: 297.5}
-  m_SizeDelta: {x: 1058, y: 595}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -69.3, y: -32.5}
+  m_SizeDelta: {x: 46.2, y: 7.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1319987030
 MonoBehaviour:
@@ -9525,7 +9525,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
+  m_fontSize: 10
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -9631,11 +9631,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 575b34326871ebc469db9dd904892c22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leftPercentage: 100
-  topPercentage: 100
-  widthPercentage: 100
-  heightPercentage: 100
-  canvasRect: {fileID: 3815384738292728246}
+  leftPercentage: 20
+  topPercentage: 25
+  widthPercentage: 20
+  heightPercentage: 6
 --- !u!1 &1322467612
 GameObject:
   m_ObjectHideFlags: 0
@@ -9685,6 +9684,12 @@ MonoBehaviour:
   unlockLevel: {fileID: 11400000, guid: cb4010a4979ac4a4fb25746d1b0eb15b, type: 2}
   gameOverScreen: {fileID: 3815384738326373325}
   winScreen: {fileID: 7572897192177396306}
+  guyRotater:
+    enabled: 0
+    value: {fileID: 0}
+  movetarget:
+    enabled: 0
+    value: {fileID: 0}
   needToWin: 0
 --- !u!114 &1322467615
 MonoBehaviour:
@@ -17602,7 +17607,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &3815384738326373324
 MonoBehaviour:
   m_ObjectHideFlags: 0
