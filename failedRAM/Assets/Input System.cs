@@ -290,6 +290,15 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Vertical"",
+                    ""type"": ""Button"",
+                    ""id"": ""8572fe26-c95c-4e45-83bf-84a512dca569"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -501,6 +510,50 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
                     ""action"": ""Horizontal"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cc3dbd4e-6a94-4d75-b98b-29f5976dad8b"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Vertical"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9a3fe892-e840-417a-aae8-c54ebb759674"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Vertical"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6898a5ea-7759-492a-a095-756c3bfd168c"",
+                    ""path"": ""<HID::Controller>/stick/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Vertical"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""28bbb314-4432-47e0-b20c-8117c5e83832"",
+                    ""path"": ""<HID::Controller>/trigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Vertical"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -515,6 +568,7 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
         m_Menu_OpenLevelSelect = m_Menu.FindAction("Open Level Select", throwIfNotFound: true);
         m_Menu_RestartLevel = m_Menu.FindAction("Restart Level", throwIfNotFound: true);
         m_Menu_Horizontal = m_Menu.FindAction("Horizontal", throwIfNotFound: true);
+        m_Menu_Vertical = m_Menu.FindAction("Vertical", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -625,6 +679,7 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
     private readonly InputAction m_Menu_OpenLevelSelect;
     private readonly InputAction m_Menu_RestartLevel;
     private readonly InputAction m_Menu_Horizontal;
+    private readonly InputAction m_Menu_Vertical;
     public struct MenuActions
     {
         private @InputSystem m_Wrapper;
@@ -632,6 +687,7 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
         public InputAction @OpenLevelSelect => m_Wrapper.m_Menu_OpenLevelSelect;
         public InputAction @RestartLevel => m_Wrapper.m_Menu_RestartLevel;
         public InputAction @Horizontal => m_Wrapper.m_Menu_Horizontal;
+        public InputAction @Vertical => m_Wrapper.m_Menu_Vertical;
         public InputActionMap Get() { return m_Wrapper.m_Menu; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -650,6 +706,9 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
             @Horizontal.started += instance.OnHorizontal;
             @Horizontal.performed += instance.OnHorizontal;
             @Horizontal.canceled += instance.OnHorizontal;
+            @Vertical.started += instance.OnVertical;
+            @Vertical.performed += instance.OnVertical;
+            @Vertical.canceled += instance.OnVertical;
         }
 
         private void UnregisterCallbacks(IMenuActions instance)
@@ -663,6 +722,9 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
             @Horizontal.started -= instance.OnHorizontal;
             @Horizontal.performed -= instance.OnHorizontal;
             @Horizontal.canceled -= instance.OnHorizontal;
+            @Vertical.started -= instance.OnVertical;
+            @Vertical.performed -= instance.OnVertical;
+            @Vertical.canceled -= instance.OnVertical;
         }
 
         public void RemoveCallbacks(IMenuActions instance)
@@ -689,5 +751,6 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
         void OnOpenLevelSelect(InputAction.CallbackContext context);
         void OnRestartLevel(InputAction.CallbackContext context);
         void OnHorizontal(InputAction.CallbackContext context);
+        void OnVertical(InputAction.CallbackContext context);
     }
 }

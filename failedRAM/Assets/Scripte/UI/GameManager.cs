@@ -9,10 +9,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameOverScreen gameOverScreen;
     [SerializeField] private WinScreen winScreen;
 
-    //transition (main menu)
-    [SerializeField] private Optional<RotateAroundPivot> guyRotater;
-    [SerializeField] private Optional<RotateAroundPivot> movetarget;
-
     [SerializeField] private int needToWin;
     private int intToWin = 0;
 
@@ -58,9 +54,7 @@ public class GameManager : MonoBehaviour
     {
         if (intToWin >= needToWin)
         {
-            unlockLevel.Unlock();
-            guyRotater.Value.enabled = true;
-            movetarget.Value.enabled = true;        
+            unlockLevel.Unlock();      
             WinGame();
         }
         else { intToWin++; }

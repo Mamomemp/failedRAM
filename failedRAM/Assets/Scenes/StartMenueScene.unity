@@ -419,6 +419,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3211466d031e3143b7b0bf6f3f6c09d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  guyRotater: {fileID: 873621987}
+  movetarget: {fileID: 1219221726}
 --- !u!4 &177872083
 Transform:
   m_ObjectHideFlags: 0
@@ -969,12 +971,6 @@ MonoBehaviour:
   unlockLevel: {fileID: 11400000, guid: cb4010a4979ac4a4fb25746d1b0eb15b, type: 2}
   gameOverScreen: {fileID: 1451579945}
   winScreen: {fileID: 1845431930}
-  guyRotater:
-    enabled: 1
-    value: {fileID: 873621987}
-  movetarget:
-    enabled: 1
-    value: {fileID: 1219221726}
   needToWin: 1
 --- !u!114 &389651697
 MonoBehaviour:
