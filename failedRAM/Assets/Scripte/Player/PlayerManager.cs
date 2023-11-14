@@ -49,8 +49,14 @@ public class PlayerManager : MonoBehaviour
 
     private void damage_nehmen(int damage)
     {
-        objektPulser.Value.Pulse();
         spieler_leben -= damage;
-        healthBar.Value.SetHealth(spieler_leben);
+        if (objektPulser.Value != null)
+        {
+            objektPulser.Value.Pulse();
+        }
+        if (healthBar.Value != null)
+        {
+            healthBar.Value.SetHealth(spieler_leben);
+        }
     }
 }
