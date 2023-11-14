@@ -2498,8 +2498,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   max_spieler_leben: 3
   Spieler_Object: {fileID: 784382273}
-  healthBar: {fileID: 3815384737842218585}
-  objektPulser: {fileID: 3815384737842218590}
+  healthBar:
+    enabled: 1
+    value: {fileID: 3815384737842218585}
+  objektPulser:
+    enabled: 1
+    value: {fileID: 3815384737842218590}
   dead_delay: 0.2
   grace_period: 1
   gameManager: {fileID: 1322467614}

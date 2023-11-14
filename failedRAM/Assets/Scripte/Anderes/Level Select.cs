@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class LevelSelect : MonoBehaviour
 {
-    [SerializeField] string levelSelect_Index;
-    [SerializeField] string gewuenschte_level_Index;
+    private string levelSelect_Index;
+    private string gewuenschte_level_Index;
 
    // private bool ist_Settings_offen = false; // Wip
     private InputSystem inputSystem;

@@ -2728,8 +2728,24 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6767412617719811808}
     - target: {fileID: 5711026939838703283, guid: e643808494d960b45bda89c2421b94aa, type: 3}
+      propertyPath: healthBar.value
+      value: 
+      objectReference: {fileID: 6767412617719811815}
+    - target: {fileID: 5711026939838703283, guid: e643808494d960b45bda89c2421b94aa, type: 3}
+      propertyPath: healthBar.enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5711026939838703283, guid: e643808494d960b45bda89c2421b94aa, type: 3}
       propertyPath: max_spieler_leben
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5711026939838703283, guid: e643808494d960b45bda89c2421b94aa, type: 3}
+      propertyPath: objektPulser.value
+      value: 
+      objectReference: {fileID: 6767412617719811808}
+    - target: {fileID: 5711026939838703283, guid: e643808494d960b45bda89c2421b94aa, type: 3}
+      propertyPath: objektPulser.enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
