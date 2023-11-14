@@ -1343,9 +1343,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23cc8868ed5c8334dbb5e039736a2fa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unlockLevel: {fileID: 0}
-  gameOverScreen: {fileID: 6767412617092017011}
-  winScreen: {fileID: 2137957100}
+  unlockLevel: {fileID: 11400000, guid: cb4010a4979ac4a4fb25746d1b0eb15b, type: 2}
+  gameOverScreen:
+    enabled: 1
+    value: {fileID: 6767412617092017011}
+  winScreen:
+    enabled: 1
+    value: {fileID: 2137957100}
   needToWin: 0
 --- !u!4 &685306893
 Transform:
@@ -2238,11 +2242,11 @@ Transform:
   m_GameObject: {fileID: 1344944051}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -202.5, y: -114, z: 0}
+  m_LocalPosition: {x: 106, y: 59.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6767412617259862280}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1344944053
 MonoBehaviour:
@@ -3112,6 +3116,7 @@ GameObject:
   - component: {fileID: 2137957099}
   - component: {fileID: 2137957098}
   - component: {fileID: 2137957100}
+  - component: {fileID: 2137957101}
   m_Layer: 5
   m_Name: Win
   m_TagString: Untagged
@@ -3190,6 +3195,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 841bffbf922ab7449bd86b45ec5bd7ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2137957101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2137957096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0403d2ab38c027479bffe95f8d32a5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManager: {fileID: 685306892}
+  isMainMenu: 0
 --- !u!1001 &4646563714257784742
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3342,6 +3361,7 @@ GameObject:
   - component: {fileID: 6767412617092017009}
   - component: {fileID: 6767412617092017010}
   - component: {fileID: 6767412617092017011}
+  - component: {fileID: 6767412617092017022}
   m_Layer: 5
   m_Name: Game Over
   m_TagString: Untagged
@@ -3349,6 +3369,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
+--- !u!114 &6767412617092017022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6767412617092017021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0403d2ab38c027479bffe95f8d32a5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManager: {fileID: 685306892}
+  isMainMenu: 0
 --- !u!224 &6767412617259862280
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3361,7 +3395,6 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1344944052}
   - {fileID: 6767412617719811809}
   - {fileID: 6767412617092017020}
   - {fileID: 2137957097}
@@ -3866,6 +3899,7 @@ SceneRoots:
   - {fileID: 1808529935}
   - {fileID: 1696070490}
   - {fileID: 1578174463}
+  - {fileID: 1344944052}
   - {fileID: 6767412617259862280}
   - {fileID: 992414807}
   - {fileID: 560448180}

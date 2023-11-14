@@ -1772,12 +1772,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unlockLevel: {fileID: 11400000, guid: cb4010a4979ac4a4fb25746d1b0eb15b, type: 2}
-  gameOverScreen: {fileID: 2010709992}
-  winScreen: {fileID: 918165164}
-  guyRotater:
+  gameOverScreen:
     enabled: 0
     value: {fileID: 0}
-  movetarget:
+  winScreen:
     enabled: 0
     value: {fileID: 0}
   needToWin: 0
@@ -2537,6 +2535,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 326522a962f63804f93afefda4ae2984, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 1634392479}
+  isMainMenu: 0
 --- !u!1 &2013642767
 GameObject:
   m_ObjectHideFlags: 0
