@@ -42,12 +42,14 @@ public class GameManager : MonoBehaviour
 
     public void ReturnToLevelSelect()
     {
+        unlockLevel.SaveCurrentSceneName();
         SceneManager.LoadScene("LevelSelectScene");
         Time.timeScale = 1f;
     }
 
     public void GoToLevelSelect()
     {
+        unlockLevel.SaveCurrentSceneName();
         SceneManager.LoadScene("LevelSelectScene");
         Time.timeScale = 1f;
     }
