@@ -299,6 +299,15 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Pause Knopf"",
+                    ""type"": ""Button"",
+                    ""id"": ""5cc42419-4232-4d3c-bea1-172f1d9f28ff"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -554,6 +563,39 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
                     ""action"": ""Vertical"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b567e33a-4ab3-4049-9f2c-c25cebf431a6"",
+                    ""path"": ""<Keyboard>/p"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause Knopf"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d4d2b2ba-41af-458d-9561-077eb0fe45a3"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause Knopf"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cdc8b06e-5693-4fe0-a5ab-ab4e67e65d73"",
+                    ""path"": ""<HID::Controller>/button10"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause Knopf"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -569,6 +611,7 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
         m_Menu_RestartLevel = m_Menu.FindAction("Restart Level", throwIfNotFound: true);
         m_Menu_Horizontal = m_Menu.FindAction("Horizontal", throwIfNotFound: true);
         m_Menu_Vertical = m_Menu.FindAction("Vertical", throwIfNotFound: true);
+        m_Menu_PauseKnopf = m_Menu.FindAction("Pause Knopf", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -680,6 +723,7 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
     private readonly InputAction m_Menu_RestartLevel;
     private readonly InputAction m_Menu_Horizontal;
     private readonly InputAction m_Menu_Vertical;
+    private readonly InputAction m_Menu_PauseKnopf;
     public struct MenuActions
     {
         private @InputSystem m_Wrapper;
@@ -688,6 +732,7 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
         public InputAction @RestartLevel => m_Wrapper.m_Menu_RestartLevel;
         public InputAction @Horizontal => m_Wrapper.m_Menu_Horizontal;
         public InputAction @Vertical => m_Wrapper.m_Menu_Vertical;
+        public InputAction @PauseKnopf => m_Wrapper.m_Menu_PauseKnopf;
         public InputActionMap Get() { return m_Wrapper.m_Menu; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -709,6 +754,9 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
             @Vertical.started += instance.OnVertical;
             @Vertical.performed += instance.OnVertical;
             @Vertical.canceled += instance.OnVertical;
+            @PauseKnopf.started += instance.OnPauseKnopf;
+            @PauseKnopf.performed += instance.OnPauseKnopf;
+            @PauseKnopf.canceled += instance.OnPauseKnopf;
         }
 
         private void UnregisterCallbacks(IMenuActions instance)
@@ -725,6 +773,9 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
             @Vertical.started -= instance.OnVertical;
             @Vertical.performed -= instance.OnVertical;
             @Vertical.canceled -= instance.OnVertical;
+            @PauseKnopf.started -= instance.OnPauseKnopf;
+            @PauseKnopf.performed -= instance.OnPauseKnopf;
+            @PauseKnopf.canceled -= instance.OnPauseKnopf;
         }
 
         public void RemoveCallbacks(IMenuActions instance)
@@ -752,5 +803,6 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
         void OnRestartLevel(InputAction.CallbackContext context);
         void OnHorizontal(InputAction.CallbackContext context);
         void OnVertical(InputAction.CallbackContext context);
+        void OnPauseKnopf(InputAction.CallbackContext context);
     }
 }

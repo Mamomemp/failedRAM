@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraLevelSelectTransition : MonoBehaviour
@@ -8,52 +7,67 @@ public class CameraLevelSelectTransition : MonoBehaviour
     [SerializeField] private Camera main_Camera;
     [SerializeField] private UnlockLevel unlockLevel;
 
+    [SerializeField] private GameObject screen_GO;
+    [SerializeField] private GameObject target_screen;
+    [SerializeField] private GameObject secret_GO;
+    [SerializeField] private GameObject player;
+    [SerializeField] private GameObject target_player;
+
     [SerializeField] private GameObject[] gameObject_Array;
 
-    private float Cam_geschwindichkeit = 1f;
-    private string scene_Name;
+    [SerializeField] private string secret_name;
+    [SerializeField] private float Cam_geschwindichkeit = 1f;
+    [SerializeField] private string scene_Name;
 
     private void Awake()
     {
         scene_Name = unlockLevel.GetSavedSceneName();
+        TeleportObjects();
     }
 
     private void Start()
     {
-        FindTransformBySceneName();
+        StartCoroutine(MoveToMainCameraPosition());
     }
 
-    void FindTransformBySceneName()
+    void TeleportObjects()
     {
         foreach (GameObject obj in gameObject_Array)
         {
             if (obj.scene.name == scene_Name)
             {
-                transition_Camera.transform.position = obj.transform.position;
-                transition_Camera.transform.rotation = obj.transform.rotation;
+                if (scene_Name == secret_name)
+                {
+                    // Teleport player and target_player to the z-transform of secret_GO
+                    player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, secret_GO.transform.position.z);
+                    target_player.transform.position = new Vector3(target_player.transform.position.x, target_player.transform.position.y, secret_GO.transform.position.z);
+                }
+                else
+                {
+                    // Teleport screen_GO, player, and target_player to the z-transform of the foundObject
+                    screen_GO.transform.position = new Vector3(screen_GO.transform.position.x, screen_GO.transform.position.y, obj.transform.position.z);
+                    target_screen.transform.position = new Vector3(target_screen.transform.position.x, target_screen.transform.position.y, obj.transform.position.z);
+                    player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, obj.transform.position.z);
+                    target_player.transform.position = new Vector3(target_player.transform.position.x, target_player.transform.position.y, obj.transform.position.z);
+                }
 
                 break;
             }
         }
     }
 
-
-    #region MoveTowards
-    void Update()
+    IEnumerator MoveToMainCameraPosition()
     {
         Transform target = main_Camera.transform;
-        while (transition_Camera.transform.position != main_Camera.transform.position)
+
+        while (transition_Camera.transform.position != target.position)
         {
-            transition_Camera.transform.position = Vector3.MoveTowards(transition_Camera.transform.position, target.transform.position, Cam_geschwindichkeit * Time.deltaTime);
+            transition_Camera.transform.position = Vector3.MoveTowards(transition_Camera.transform.position, target.position, Cam_geschwindichkeit * Time.deltaTime);
+            yield return null; // Wait for the next frame
         }
+
+        // Main Camera is now active, transition Camera is deactivated
+        main_Camera.gameObject.SetActive(true);
+        transition_Camera.gameObject.SetActive(false);
     }
-    #endregion
 }
-/*
- * tran cam
- * main cam
- * array positons
- * get old scene
- * 
- * transform from array pos to main cam
- */

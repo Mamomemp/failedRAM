@@ -1194,7 +1194,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1104304988}
   - component: {fileID: 1104304987}
-  - component: {fileID: 1104304986}
   - component: {fileID: 1104304985}
   - component: {fileID: 1104304984}
   m_Layer: 0
@@ -1219,12 +1218,19 @@ MonoBehaviour:
   transition_Camera: {fileID: 1104304987}
   main_Camera: {fileID: 5036824190916374900}
   unlockLevel: {fileID: 11400000, guid: cb4010a4979ac4a4fb25746d1b0eb15b, type: 2}
+  screen_GO: {fileID: 878143126473502815}
+  target_screen: {fileID: 959076383}
+  secret_GO: {fileID: 8227088612826524345}
+  player: {fileID: 677753831}
+  target_player: {fileID: 1295671494}
   gameObject_Array:
   - {fileID: 2013642767}
   - {fileID: 1842673209}
   - {fileID: 1850201212}
   - {fileID: 1305632061}
   - {fileID: 1786771299}
+  secret_name: SampleScene
+  Cam_geschwindichkeit: 0.2
 --- !u!114 &1104304985
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1269,14 +1275,6 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
---- !u!81 &1104304986
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1104304983}
-  m_Enabled: 1
 --- !u!20 &1104304987
 Camera:
   m_ObjectHideFlags: 0
@@ -1288,14 +1286,14 @@ Camera:
   serializedVersion: 2
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
-  m_projectionMatrixMode: 1
+  m_projectionMatrixMode: 2
   m_GateFitMode: 2
   m_FOVAxisMode: 0
   m_Iso: 200
   m_ShutterSpeed: 0.005
   m_Aperture: 16
-  m_FocusDistance: 10
-  m_FocalLength: 50
+  m_FocusDistance: 10000
+  m_FocalLength: 49.9836
   m_BladeCount: 5
   m_Curvature: {x: 2, y: 11}
   m_BarrelClipping: 0.25
@@ -1308,9 +1306,9 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
-  far clip plane: 1000
-  field of view: 60
+  near clip plane: 0.1
+  far clip plane: 100
+  field of view: 27
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -1336,13 +1334,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1104304983}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.0000019073486, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0.7071068, y: 0.0000000544882, z: 0.00000002980551, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: -3.24, z: 4}
+  m_LocalScale: {x: 300, y: 300.00003, z: 300.00003}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1 &1127623699
 GameObject:
   m_ObjectHideFlags: 0
@@ -3290,7 +3288,7 @@ GameObject:
   - component: {fileID: 5750191067580123127}
   - component: {fileID: 8241786511496255525}
   m_Layer: 0
-  m_Name: Screnn PC
+  m_Name: Screen PC
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3730,7 +3728,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2548487898123348350
 Transform:
   m_ObjectHideFlags: 0
