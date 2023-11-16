@@ -8,6 +8,7 @@ public class MenueLogik : MonoBehaviour
 {
     [SerializeField] private RotateAroundPivot guyRotater;
     [SerializeField] private RotateAroundPivot movetarget;
+    [SerializeField] private UnlockLevel unlockLevel;
     //[SerializeField] private BoxCollider boxcollider;
     private InputSystem inputSystem;
 
@@ -34,7 +35,8 @@ public class MenueLogik : MonoBehaviour
     {
         guyRotater.enabled = true;
         movetarget.enabled = true;
-       // boxcollider.enabled = false;
+        // boxcollider.enabled = false;
+        unlockLevel.SaveCurrentSceneName();
         StartCoroutine(LoadSceneDelayed("LevelSelectScene", 3f));
     }
     private IEnumerator LoadSceneDelayed(string sceneName, float delayInSeconds)

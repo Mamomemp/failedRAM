@@ -8,10 +8,10 @@ public class CameraLevelSelectTransition : MonoBehaviour
     [SerializeField] private UnlockLevel unlockLevel;
 
     [SerializeField] private GameObject screen_GO;
-    [SerializeField] private GameObject target_screen;
     [SerializeField] private GameObject secret_GO;
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject target_player;
+    [SerializeField] private GameObject target_screen;
 
     [SerializeField] private GameObject[] gameObject_Array;
 
@@ -23,6 +23,8 @@ public class CameraLevelSelectTransition : MonoBehaviour
     {
         scene_Name = unlockLevel.GetSavedSceneName();
         TeleportObjects();
+    
+
     }
 
     private void Start()
@@ -34,23 +36,25 @@ public class CameraLevelSelectTransition : MonoBehaviour
     {
         foreach (GameObject obj in gameObject_Array)
         {
-            if (obj.scene.name == scene_Name)
+            if (obj.name == scene_Name)
             {
                 if (scene_Name == secret_name)
                 {
-                    // Teleport player and target_player to the z-transform of secret_GO
+                    // Teleport player, target_player, and transition_Camera to the z-transform of secret_GO
                     player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, secret_GO.transform.position.z);
                     target_player.transform.position = new Vector3(target_player.transform.position.x, target_player.transform.position.y, secret_GO.transform.position.z);
+                    transition_Camera.transform.position = new Vector3(transition_Camera.transform.position.x, transition_Camera.transform.position.y, secret_GO.transform.position.z);
                 }
                 else
                 {
-                    // Teleport screen_GO, player, and target_player to the z-transform of the foundObject
+                    // Teleport screen_GO, player, target_player, and transition_Camera to the z-transform of the foundObject
                     screen_GO.transform.position = new Vector3(screen_GO.transform.position.x, screen_GO.transform.position.y, obj.transform.position.z);
-                    target_screen.transform.position = new Vector3(target_screen.transform.position.x, target_screen.transform.position.y, obj.transform.position.z);
                     player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, obj.transform.position.z);
                     target_player.transform.position = new Vector3(target_player.transform.position.x, target_player.transform.position.y, obj.transform.position.z);
+                    transition_Camera.transform.position = new Vector3(transition_Camera.transform.position.x, transition_Camera.transform.position.y, obj.transform.position.z);
                 }
-
+                // Teleport target_screen to the z-transform of the foundObject
+                target_screen.transform.position = new Vector3(target_screen.transform.position.x, target_screen.transform.position.y, obj.transform.position.z);
                 break;
             }
         }
@@ -58,6 +62,7 @@ public class CameraLevelSelectTransition : MonoBehaviour
 
     IEnumerator MoveToMainCameraPosition()
     {
+
         Transform target = main_Camera.transform;
 
         while (transition_Camera.transform.position != target.position)

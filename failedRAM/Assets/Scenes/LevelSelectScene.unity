@@ -1219,10 +1219,10 @@ MonoBehaviour:
   main_Camera: {fileID: 5036824190916374900}
   unlockLevel: {fileID: 11400000, guid: cb4010a4979ac4a4fb25746d1b0eb15b, type: 2}
   screen_GO: {fileID: 878143126473502815}
-  target_screen: {fileID: 959076383}
   secret_GO: {fileID: 8227088612826524345}
   player: {fileID: 677753831}
   target_player: {fileID: 1295671494}
+  target_screen: {fileID: 959076383}
   gameObject_Array:
   - {fileID: 2013642767}
   - {fileID: 1842673209}
@@ -1230,7 +1230,8 @@ MonoBehaviour:
   - {fileID: 1305632061}
   - {fileID: 1786771299}
   secret_name: SampleScene
-  Cam_geschwindichkeit: 0.2
+  Cam_geschwindichkeit: 3
+  scene_Name: RoboLevel
 --- !u!114 &1104304985
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1335,7 +1336,7 @@ Transform:
   m_GameObject: {fileID: 1104304983}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0.0000000544882, z: 0.00000002980551, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -3.24, z: 4}
+  m_LocalPosition: {x: -0.9, y: 1, z: 4.2}
   m_LocalScale: {x: 300, y: 300.00003, z: 300.00003}
   m_ConstrainProportionsScale: 0
   m_Children: []

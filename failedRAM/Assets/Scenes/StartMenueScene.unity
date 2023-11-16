@@ -421,6 +421,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   guyRotater: {fileID: 873621987}
   movetarget: {fileID: 1219221726}
+  unlockLevel: {fileID: 11400000, guid: cb4010a4979ac4a4fb25746d1b0eb15b, type: 2}
 --- !u!4 &177872083
 Transform:
   m_ObjectHideFlags: 0
