@@ -2,32 +2,35 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectMover2 : MonoBehaviour
+public class ObjectMover22 : MonoBehaviour
 {
-    [System.Serializable]
-    public struct MovementData
+
+    public void MoveObject()
     {
-        public float time;
-        public float movementAmount;
-        public float movementDuration;
+        
+        Vector3 initialPosition = transform.position;
+        Vector3 targetPosition = initialPosition + new Vector3(0f, 0f, 2.65f);
+        StartCoroutine(MoveObjectCoroutine(targetPosition, 0.6f)); // 0.6 seconds duration
     }
 
-    public MovementData[] movements;
-
-    private void Update()
+    private System.Collections.IEnumerator MoveObjectCoroutine(Vector3 end, float duration)
     {
-        foreach (var movement in movements)
+        float startTime = Time.time;
+        Vector3 start = transform.position;
+
+        while (Time.time - startTime < duration)
         {
-            if (Time.time >= movement.time && Time.time <= movement.time + movement.movementDuration)
-            {
-                MoveObject(movement.movementAmount);
-            }
-        }
-    }
+            
+            float t = (Time.time - startTime) / duration;
 
-    private void MoveObject(float amount)
-    {
-        // Assuming movement is along the Z-axis
-        transform.Translate(Vector3.forward * amount * Time.deltaTime);
+            
+            transform.position = Vector3.Lerp(start, end, t);
+
+           
+            yield return null;
+        }
+
+       
+        transform.position = end;
     }
 }
