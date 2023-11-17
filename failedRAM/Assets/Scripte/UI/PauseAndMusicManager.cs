@@ -25,7 +25,7 @@ public class GamePauseManager : MonoBehaviour
         }
 
         pauseAudioSource = gameObject.AddComponent<AudioSource>();
-        playableDirector = GetComponent<PlayableDirector>();
+      
 
         // Configure background music
         if (backgroundAudioSource.clip == null)
@@ -64,7 +64,7 @@ public class GamePauseManager : MonoBehaviour
             pauseAudioSource.Play();
             pausePanel.SetActive(true);
             vendingMachine.SetActive(true);
-            playableDirector.Pause(); // Pause the timeline if it exists
+            
         }
         else
         {
@@ -73,7 +73,7 @@ public class GamePauseManager : MonoBehaviour
             pauseAudioSource.Stop();
             pausePanel.SetActive(false);
             vendingMachine.SetActive(false);
-            playableDirector.Resume(); // Resume the timeline if it exists
+           
         }
     }
 }

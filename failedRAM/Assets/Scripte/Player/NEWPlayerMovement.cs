@@ -16,6 +16,7 @@ public class NEWPlayerMovement : MonoBehaviour
     private bool wird_knopf_benutzt = false;
 
     private InputSystem inputSystem;
+    private Animator animator;
 
     private void Awake()
     {
@@ -26,12 +27,14 @@ public class NEWPlayerMovement : MonoBehaviour
     {
         inputSystem.Player.Enable();
         inputSystem.Player.Movement.performed += OnMovementPerformed;
+        inputSystem.Player.Movement.performed += OnRotationPerformed;
         inputSystem.Player.Movement.canceled += OnMovementCanceled;
     }
 
     private void OnDisable()
     {
         inputSystem.Player.Disable();
+        inputSystem.Player.Movement.performed -= OnRotationPerformed;
         inputSystem.Player.Movement.performed -= OnMovementPerformed;
         inputSystem.Player.Movement.canceled -= OnMovementCanceled;
     }
@@ -39,6 +42,7 @@ public class NEWPlayerMovement : MonoBehaviour
     private void Start()
     {
         target.parent = null; // Remove the player object as the parent of the moving target.
+        animator = GetComponent<Animator>();
     }
 
     private void Update()
@@ -80,6 +84,7 @@ public class NEWPlayerMovement : MonoBehaviour
         {
             moveInput = Vector2.zero;
         }
+        PlayAnimation("dodash");
     }
 
     private void OnMovementCanceled(InputAction.CallbackContext context)
@@ -103,4 +108,26 @@ public class NEWPlayerMovement : MonoBehaviour
             return Physics.CheckSphere(target.position + direction, 0.5f, barriere_Layer);
         }
     }
+
+    private void OnRotationPerformed(InputAction.CallbackContext context)
+    {
+        Vector2 direction = context.ReadValue<Vector2>();
+
+        if (direction != Vector2.zero)
+        {
+            float angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0f, angle, 0f);
+        }
+    }
+
+    private void PlayAnimation(string triggerName)
+    {
+        if (animator != null)
+        {
+            animator.SetTrigger(triggerName);
+        }
+    }
+
+
+
 }
