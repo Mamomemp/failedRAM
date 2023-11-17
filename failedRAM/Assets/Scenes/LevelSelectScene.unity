@@ -1184,6 +1184,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8166799384565711865}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &997348928
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 997348929}
+  m_Layer: 0
+  m_Name: Phones Cam target
+  m_TagString: Counter
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &997348929
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 997348928}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 6.83, y: 5, z: 0.92}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1104304983
 GameObject:
   m_ObjectHideFlags: 0
@@ -1220,6 +1251,7 @@ MonoBehaviour:
   unlockLevel: {fileID: 11400000, guid: cb4010a4979ac4a4fb25746d1b0eb15b, type: 2}
   screen_GO: {fileID: 878143126473502815}
   secret_GO: {fileID: 8227088612826524345}
+  phone_GO: {fileID: 997348928}
   player: {fileID: 677753831}
   target_player: {fileID: 1295671494}
   target_screen: {fileID: 959076383}
@@ -1231,7 +1263,8 @@ MonoBehaviour:
   - {fileID: 1786771299}
   secret_name: SampleScene
   Cam_geschwindichkeit: 3
-  scene_Name: RoboLevel
+  scene_Name: StartMenueScene
+  start_scene_name: StartMenueScene
 --- !u!114 &1104304985
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5831,6 +5864,7 @@ SceneRoots:
   - {fileID: 1127623702}
   - {fileID: 1858014258}
   - {fileID: 812962719}
+  - {fileID: 997348929}
   - {fileID: 556484331}
   - {fileID: 8166799384565711865}
   - {fileID: 677753834}
