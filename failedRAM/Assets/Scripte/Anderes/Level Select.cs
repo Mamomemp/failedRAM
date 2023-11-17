@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class LevelSelect : MonoBehaviour
 {
+    [SerializeField] private CameraLevelSelectTransition camTran;
+    [SerializeField] private GameManager gameManager;
     private string levelSelect_Index;
     private string gewuenschte_level_Index;
 
@@ -23,35 +25,31 @@ public class LevelSelect : MonoBehaviour
 
     private void OnEnable()
     {
-        inputSystem.Player.Enable();
-        inputSystem.Player.Movement.performed += OnMovementPerformed;
+        inputSystem.Menu.Enable();
+        inputSystem.Menu.Horizontal.performed += OnMovementPerformed;
     }
 
     private void OnDisable()
     {
-        inputSystem.Player.Disable();
-        inputSystem.Player.Movement.performed -= OnMovementPerformed;
+        inputSystem.Menu.Disable();
+        inputSystem.Menu.Horizontal.performed -= OnMovementPerformed;
     }
     #endregion
     private void startLevel()
     {
-        if (!(gewuenschte_level_Index == levelSelect_Index))
+        if (NegativCheck_GIndex_With_LSIndex())
         {
           try
           {
-              SceneManager.LoadScene(gewuenschte_level_Index);
+            
+                SceneManager.LoadScene(gewuenschte_level_Index);
           }
           catch (System.Exception)
            {
               print("Scene not Found");
               SceneManager.LoadScene(1);
            }
-        }
-        else
-        {
-            print("Settings wurden noch nicht Implementiert"); // Settings Implementieren
-        }
-       
+        }       
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -64,11 +62,28 @@ public class LevelSelect : MonoBehaviour
 
     private void OnMovementPerformed(InputAction.CallbackContext context)
     {
-        moveInput = context.ReadValue<Vector2>();
-        if (Mathf.Abs(moveInput.x) > 0)
+        StartCoroutine(LogicOnMovement(context, 1f));
+    }
+    private IEnumerator LogicOnMovement(InputAction.CallbackContext context, float delayInSeconds)
+    {
+        camTran.ActivateAndMoveCamera(gewuenschte_level_Index);
+        yield return new WaitForSeconds(delayInSeconds);
+        if (NegativCheck_GIndex_With_LSIndex())
         {
             startLevel();
         }
-
     }
+    private bool NegativCheck_GIndex_With_LSIndex()
+    {
+        if (!(gewuenschte_level_Index == levelSelect_Index))
+        {
+            print("Settings wurden noch nicht Implementiert"); // Settings Implementieren
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+
 }

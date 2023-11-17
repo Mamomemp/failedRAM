@@ -7,15 +7,14 @@ public class LevelSelectionUndRestartLogic : MonoBehaviour
 {
     private InputSystem inputSystem;
     private GameManager gameManager;
-
     private void Awake()
     {
         inputSystem = new InputSystem();
 
-        // If the GameManager component is not found, add one to the GameObject
-        gameManager = gameObject.GetComponent<GameManager>();        
+        gameManager = gameObject.GetComponent<GameManager>();
     }
 
+    #region Input stuff
     private void OnEnable()
     {
         inputSystem.Menu.Enable();
@@ -28,6 +27,7 @@ public class LevelSelectionUndRestartLogic : MonoBehaviour
         inputSystem.Menu.OpenLevelSelect.performed -= LevelSelectPerformed;
         inputSystem.Menu.RestartLevel.performed -= RestartPerformed;
     }
+    #endregion
 
     private void LevelSelectPerformed(InputAction.CallbackContext context)
     {

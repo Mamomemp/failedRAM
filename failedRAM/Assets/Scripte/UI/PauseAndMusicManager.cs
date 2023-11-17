@@ -11,7 +11,7 @@ public class pausemanager : MonoBehaviour
     public GameObject pausePanel;
     public GameObject VendingMachine;
 
-    private AudioSource backgroundAudioSource; 
+    private AudioSource backgroundAudioSource; // make it Optional
     private AudioSource pauseAudioSource; 
 
     private bool isPaused = false;
@@ -26,7 +26,7 @@ public class pausemanager : MonoBehaviour
 
     void Start()
     {
-        backgroundAudioSource = gameObject.AddComponent<AudioSource>();
+        backgroundAudioSource = gameObject.AddComponent<AudioSource>(); // gleiche abfrage wie in der Awake aber mit demhier
         pauseAudioSource = gameObject.AddComponent<AudioSource>();
 
         // Konfiguriere die Hintergrundmusik
@@ -42,7 +42,7 @@ public class pausemanager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
+        if (Input.GetKeyDown(KeyCode.P)) // ersetzten mit dem new inputsystem
         {
             // Pause-Logik
             if (isPaused)

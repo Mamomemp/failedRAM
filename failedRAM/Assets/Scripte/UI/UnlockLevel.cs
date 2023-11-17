@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class UnlockLevel : ScriptableObject
 {
     [SerializeField] private bool isUnlocked = false;
-    private string savedSceneName;
+    private string savedSceneName = "StartMenueScene";
 
     public void Unlock()
     {

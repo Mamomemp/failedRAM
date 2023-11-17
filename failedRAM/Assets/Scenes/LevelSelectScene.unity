@@ -747,6 +747,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 343fa1f01def2954e827984db48fd6b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  camTran: {fileID: 1104304984}
 --- !u!65 &677753836
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1209,7 +1210,7 @@ Transform:
   m_GameObject: {fileID: 997348928}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.83, y: 5, z: 0.92}
+  m_LocalPosition: {x: 8, y: 9, z: 0.92}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

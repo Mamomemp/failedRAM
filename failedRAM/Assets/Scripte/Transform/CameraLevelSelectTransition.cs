@@ -9,31 +9,33 @@ public class CameraLevelSelectTransition : MonoBehaviour
 
     [SerializeField] private GameObject screen_GO;
     [SerializeField] private GameObject secret_GO;
-    [SerializeField] private GameObject phone_GO; // Added phone_GO
+    [SerializeField] private GameObject phone_GO;
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject target_player;
     [SerializeField] private GameObject target_screen;
 
     [SerializeField] private GameObject[] gameObject_Array;
 
-    [SerializeField] private string secret_name;
     [SerializeField] private float Cam_geschwindichkeit = 1f;
     [SerializeField] private string scene_Name;
-    [SerializeField] private string start_scene_name; // Added start_scene_name
+    private string secret_name = "SampleScene";
+    private string start_scene_name = "StartMenueScene"; 
+    private string LevelSelect_name = "LevelSelectScene"; 
 
     private void Awake()
     {
-        //scene_Name = unlockLevel.GetSavedSceneName();
+        scene_Name = unlockLevel.GetSavedSceneName();
         TeleportObjects();
     }
 
     private void Start()
     {
-        StartCoroutine(MoveToMainCameraPosition());
+        StartCoroutine(MoveToMainCameraPosition(true, screen_GO)); //in diesen fall wird screen_GO spaeter ueberschrieben
     }
 
     void TeleportObjects()
     {
+        #region tp spell
         foreach (GameObject obj in gameObject_Array)
         {
             if (obj.name == scene_Name)
@@ -47,7 +49,6 @@ public class CameraLevelSelectTransition : MonoBehaviour
                 }
                 else if (scene_Name == start_scene_name)
                 {
-                    print("yeah it is");
                     player.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, obj.transform.position.z);
                     target_player.transform.position = new Vector3(target_player.transform.position.x, target_player.transform.position.y, obj.transform.position.z);
                     // Teleport tran_cam completly to target
@@ -65,12 +66,31 @@ public class CameraLevelSelectTransition : MonoBehaviour
                 break;
             }
         }
+        #endregion
     }
 
     #region Moveto
-    IEnumerator MoveToMainCameraPosition()
+    IEnumerator MoveToMainCameraPosition(bool zuMainCam, GameObject targetObject)
     {
-        Transform target = main_Camera.transform;
+        Transform target;
+        GameObject deactivatedcam;
+        GameObject activatedcam;
+        float offset = 0.5f;
+        Vector3 vector = new Vector3(targetObject.transform.position.x, targetObject.transform.position.y + offset, targetObject.transform.position.z);
+        if (zuMainCam)
+        {
+            target = main_Camera.transform;
+            activatedcam = main_Camera.gameObject;
+            deactivatedcam = transition_Camera.gameObject;
+        }
+        else
+        {
+            target = targetObject.transform;//fehler behebung
+            target.transform.position = vector;//positions auswehlen
+
+            activatedcam = transition_Camera.gameObject;
+            deactivatedcam = main_Camera.gameObject;
+        }
 
         while (transition_Camera.transform.position != target.position)
         {
@@ -79,8 +99,8 @@ public class CameraLevelSelectTransition : MonoBehaviour
         }
 
         // Main Camera is now active, transition Camera is deactivated
-        main_Camera.gameObject.SetActive(true);
-        transition_Camera.gameObject.SetActive(false);
+        activatedcam.SetActive(true);
+        deactivatedcam.SetActive(false);
     }
     #endregion
 
@@ -93,21 +113,25 @@ public class CameraLevelSelectTransition : MonoBehaviour
         // Check if the scene_name equals start_scene_name
         if (scene_Name == start_scene_name)
         {
-            // If true, start at phone_GO
-            transition_Camera.transform.position = phone_GO.transform.position;
+            //start at phone_GO
+            //transition_Camera.transform.position = phone_GO.transform.position;
+            MoveToMainCameraPosition(false, phone_GO);
+        }
+        else if (destination == secret_name)
+        {
+            //transition_Camera.transform.position = secret_GO.transform.position;
+            MoveToMainCameraPosition(false, secret_GO);
+
+        }
+        else if(destination == LevelSelect_name) //screen
+        {
+
         }
         else
         {
-            // Otherwise, move to screen_GO or secret_GO based on the destination string
-            if (destination == "screen")
-            {
-                transition_Camera.transform.position = screen_GO.transform.position;
-            }
-            else if (destination == "secret")
-            {
-                transition_Camera.transform.position = secret_GO.transform.position;
-            }
-            // You can add more conditions for different destinations if needed
+            //transition_Camera.transform.position = screen_GO.transform.position;
+            MoveToMainCameraPosition(false, screen_GO);
         }
+        
     }
 }
