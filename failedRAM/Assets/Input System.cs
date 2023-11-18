@@ -281,6 +281,33 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Horizontal"",
+                    ""type"": ""Button"",
+                    ""id"": ""71f84195-af0b-4c93-861c-4e15c1a38e6c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Vertical"",
+                    ""type"": ""Button"",
+                    ""id"": ""8572fe26-c95c-4e45-83bf-84a512dca569"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Pause Knopf"",
+                    ""type"": ""Button"",
+                    ""id"": ""5cc42419-4232-4d3c-bea1-172f1d9f28ff"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -360,6 +387,215 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
                     ""action"": ""Restart Level"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""AD"",
+                    ""id"": ""d7684300-e56a-467c-a009-6dd46d445a83"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Horizontal"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""f884d162-bb2c-42df-8250-3590c2c4a9ac"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Horizontal"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""9ab9f3c0-670d-492f-ae26-dd0a1d5abfab"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Horizontal"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Arrow"",
+                    ""id"": ""8b8e8c49-12bf-4719-8c68-1ed82aa1790d"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Horizontal"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""5a0b4b1f-d9ed-40f4-9b8f-aab7445497c8"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Horizontal"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""861ec489-908a-49e7-91e7-d1f1e75f3518"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Horizontal"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Controller Left Stick"",
+                    ""id"": ""6eae70ab-f81f-4dd0-8a44-0a6adb0989f0"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Horizontal"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""88b7ba20-4198-4cc7-9033-edf815632e94"",
+                    ""path"": ""<HID::Controller>/stick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Horizontal"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""87d6dc29-bb6f-4577-a5da-6799143a2e46"",
+                    ""path"": ""<HID::Controller>/stick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Horizontal"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Controller Buttons"",
+                    ""id"": ""04a5ec44-a57b-483a-901e-e82a3aefd847"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Horizontal"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""a1f9515e-9bca-4fee-909b-d00b9fb10f24"",
+                    ""path"": ""<HID::Controller>/button4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Horizontal"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""46487008-f4f6-4752-84e8-d29a80dff833"",
+                    ""path"": ""<HID::Controller>/button2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Horizontal"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cc3dbd4e-6a94-4d75-b98b-29f5976dad8b"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Vertical"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9a3fe892-e840-417a-aae8-c54ebb759674"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Vertical"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6898a5ea-7759-492a-a095-756c3bfd168c"",
+                    ""path"": ""<HID::Controller>/stick/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Vertical"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""28bbb314-4432-47e0-b20c-8117c5e83832"",
+                    ""path"": ""<HID::Controller>/trigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Vertical"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b567e33a-4ab3-4049-9f2c-c25cebf431a6"",
+                    ""path"": ""<Keyboard>/p"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause Knopf"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d4d2b2ba-41af-458d-9561-077eb0fe45a3"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause Knopf"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cdc8b06e-5693-4fe0-a5ab-ab4e67e65d73"",
+                    ""path"": ""<HID::Controller>/button10"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause Knopf"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -373,6 +609,9 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
         m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
         m_Menu_OpenLevelSelect = m_Menu.FindAction("Open Level Select", throwIfNotFound: true);
         m_Menu_RestartLevel = m_Menu.FindAction("Restart Level", throwIfNotFound: true);
+        m_Menu_Horizontal = m_Menu.FindAction("Horizontal", throwIfNotFound: true);
+        m_Menu_Vertical = m_Menu.FindAction("Vertical", throwIfNotFound: true);
+        m_Menu_PauseKnopf = m_Menu.FindAction("Pause Knopf", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -482,12 +721,18 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
     private List<IMenuActions> m_MenuActionsCallbackInterfaces = new List<IMenuActions>();
     private readonly InputAction m_Menu_OpenLevelSelect;
     private readonly InputAction m_Menu_RestartLevel;
+    private readonly InputAction m_Menu_Horizontal;
+    private readonly InputAction m_Menu_Vertical;
+    private readonly InputAction m_Menu_PauseKnopf;
     public struct MenuActions
     {
         private @InputSystem m_Wrapper;
         public MenuActions(@InputSystem wrapper) { m_Wrapper = wrapper; }
         public InputAction @OpenLevelSelect => m_Wrapper.m_Menu_OpenLevelSelect;
         public InputAction @RestartLevel => m_Wrapper.m_Menu_RestartLevel;
+        public InputAction @Horizontal => m_Wrapper.m_Menu_Horizontal;
+        public InputAction @Vertical => m_Wrapper.m_Menu_Vertical;
+        public InputAction @PauseKnopf => m_Wrapper.m_Menu_PauseKnopf;
         public InputActionMap Get() { return m_Wrapper.m_Menu; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -503,6 +748,15 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
             @RestartLevel.started += instance.OnRestartLevel;
             @RestartLevel.performed += instance.OnRestartLevel;
             @RestartLevel.canceled += instance.OnRestartLevel;
+            @Horizontal.started += instance.OnHorizontal;
+            @Horizontal.performed += instance.OnHorizontal;
+            @Horizontal.canceled += instance.OnHorizontal;
+            @Vertical.started += instance.OnVertical;
+            @Vertical.performed += instance.OnVertical;
+            @Vertical.canceled += instance.OnVertical;
+            @PauseKnopf.started += instance.OnPauseKnopf;
+            @PauseKnopf.performed += instance.OnPauseKnopf;
+            @PauseKnopf.canceled += instance.OnPauseKnopf;
         }
 
         private void UnregisterCallbacks(IMenuActions instance)
@@ -513,6 +767,15 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
             @RestartLevel.started -= instance.OnRestartLevel;
             @RestartLevel.performed -= instance.OnRestartLevel;
             @RestartLevel.canceled -= instance.OnRestartLevel;
+            @Horizontal.started -= instance.OnHorizontal;
+            @Horizontal.performed -= instance.OnHorizontal;
+            @Horizontal.canceled -= instance.OnHorizontal;
+            @Vertical.started -= instance.OnVertical;
+            @Vertical.performed -= instance.OnVertical;
+            @Vertical.canceled -= instance.OnVertical;
+            @PauseKnopf.started -= instance.OnPauseKnopf;
+            @PauseKnopf.performed -= instance.OnPauseKnopf;
+            @PauseKnopf.canceled -= instance.OnPauseKnopf;
         }
 
         public void RemoveCallbacks(IMenuActions instance)
@@ -538,5 +801,8 @@ public partial class @InputSystem: IInputActionCollection2, IDisposable
     {
         void OnOpenLevelSelect(InputAction.CallbackContext context);
         void OnRestartLevel(InputAction.CallbackContext context);
+        void OnHorizontal(InputAction.CallbackContext context);
+        void OnVertical(InputAction.CallbackContext context);
+        void OnPauseKnopf(InputAction.CallbackContext context);
     }
 }

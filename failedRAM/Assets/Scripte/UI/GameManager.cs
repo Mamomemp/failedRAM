@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private UnlockLevel unlockLevel;
-    [SerializeField] private GameOverScreen gameOverScreen;
-    [SerializeField] private WinScreen winScreen;
+    [SerializeField] private Optional<GameOverScreen> gameOverScreen;
+    [SerializeField] private Optional<WinScreen> winScreen;
 
     [SerializeField] private int needToWin;
     private int intToWin = 0;
@@ -20,16 +20,15 @@ public class GameManager : MonoBehaviour
         if (!gameEnded)
         {
             gameEnded = true;
-            winScreen.WinScreen_toggle();
+            winScreen.Value.WinScreen_toggle();
         }
     }
-
     public void LoseGame()
-    {
+    {   
         if (!gameEnded)
         {
             gameEnded = true;
-            gameOverScreen.GameOverScreen_toggle();
+            gameOverScreen.Value.GameOverScreen_toggle();
         }
     }
     #endregion
@@ -39,14 +38,20 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         Time.timeScale = 1f;
-
     }
 
     public void ReturnToLevelSelect()
     {
+        unlockLevel.SaveCurrentSceneName();
         SceneManager.LoadScene("LevelSelectScene");
         Time.timeScale = 1f;
+    }
 
+    public void GoToLevelSelect()
+    {
+        unlockLevel.SaveCurrentSceneName();
+        SceneManager.LoadScene("LevelSelectScene");
+        Time.timeScale = 1f;
     }
     #endregion
 
@@ -55,7 +60,7 @@ public class GameManager : MonoBehaviour
     {
         if (intToWin >= needToWin)
         {
-            unlockLevel.Unlock();
+            unlockLevel.Unlock();      
             WinGame();
         }
         else { intToWin++; }

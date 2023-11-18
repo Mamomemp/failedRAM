@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class RandomObjectSpawner : MonoBehaviour
 {
@@ -9,20 +10,46 @@ public class RandomObjectSpawner : MonoBehaviour
     [SerializeField] private float initialSpawnDelay = 2.0f;
     [SerializeField] private float minSpawnFrequency = 1.0f;
     [SerializeField] private float maxSpawnFrequency = 0.5f;
+    [SerializeField] private bool startSpawning;
 
     private float nextSpawnTime;
     private float timeSinceLastSpawn;
+    private InputSystem inputSystem;
+
+    #region SetstartSpawing
+    private void Awake()
+    {
+        inputSystem = new InputSystem();
+    }
+
+    private void OnEnable()
+    {
+        inputSystem.Menu.Enable();
+        inputSystem.Menu.Horizontal.performed += HorizontalPerformed;
+    }
+    private void OnDisable()
+    {
+        inputSystem.Menu.Disable();
+        inputSystem.Menu.Horizontal.performed -= HorizontalPerformed;
+    }
+    private void HorizontalPerformed(InputAction.CallbackContext context)
+    {
+        startSpawning = true;
+    }
+
+    #endregion
 
     private void Start()
     {
         nextSpawnTime = initialSpawnDelay;
+        startSpawning = false;
     }
 
     private void Update()
     {
         timeSinceLastSpawn += Time.deltaTime;
 
-        if (timeSinceLastSpawn >= nextSpawnTime)
+        if (timeSinceLastSpawn >= nextSpawnTime && startSpawning)
         {
             SpawnObject();
             timeSinceLastSpawn = 0f;
@@ -47,5 +74,10 @@ public class RandomObjectSpawner : MonoBehaviour
     {
         int randomIndex = Random.Range(0, list.Count);
         return randomIndex;
+    }
+
+    public void SetStartSpawingFalse()
+    {
+        startSpawning = false;
     }
 }

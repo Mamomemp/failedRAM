@@ -1,15 +1,15 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem; 
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class LevelSelect : MonoBehaviour
 {
-    [SerializeField] string levelSelect_Index;
-    [SerializeField] string gewuenschte_level_Index;
-
-   // private bool ist_Settings_offen = false; // Wip
+    [SerializeField] private CameraLevelSelectTransition camTran;
+    [SerializeField] private UnlockLevel unlockLevel;
+    [SerializeField] private float waitToStart = 1f;
+    private string levelSelect_Index;
+    private string gewuenschte_level_Index;
     private InputSystem inputSystem;
     private Vector2 moveInput;
 
@@ -18,40 +18,36 @@ public class LevelSelect : MonoBehaviour
     {
         inputSystem = new InputSystem();
         levelSelect_Index = SceneManager.GetActiveScene().name;
-        gewuenschte_level_Index = levelSelect_Index;
+        gewuenschte_level_Index = unlockLevel.GetSavedSceneName();
     }
 
     private void OnEnable()
     {
-        inputSystem.Player.Enable();
-        inputSystem.Player.Movement.performed += OnMovementPerformed;
+        inputSystem.Menu.Enable();
+        inputSystem.Menu.Horizontal.performed += OnMovementPerformed;
     }
 
     private void OnDisable()
     {
-        inputSystem.Player.Disable();
-        inputSystem.Player.Movement.performed -= OnMovementPerformed;
+        inputSystem.Menu.Disable();
+        inputSystem.Menu.Horizontal.performed -= OnMovementPerformed;
     }
     #endregion
+
     private void startLevel()
     {
-        if (!(gewuenschte_level_Index == levelSelect_Index))
+        if (NegativCheck_GIndex_With_LSIndex())
         {
-          try
-          {
-              SceneManager.LoadScene(gewuenschte_level_Index);
-          }
-          catch (System.Exception)
-           {
-              print("Scene not Found");
-              SceneManager.LoadScene(1);
-           }
+            try
+            {
+                SceneManager.LoadScene(gewuenschte_level_Index);
+            }
+            catch (System.Exception)
+            {
+                print("Scene not Found");
+                SceneManager.LoadScene(1);
+            }
         }
-        else
-        {
-            print("Settings wurden noch nicht Implementiert"); // Settings Implementieren
-        }
-       
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -64,11 +60,28 @@ public class LevelSelect : MonoBehaviour
 
     private void OnMovementPerformed(InputAction.CallbackContext context)
     {
-        moveInput = context.ReadValue<Vector2>();
-        if (Mathf.Abs(moveInput.x) > 0)
+        StartCoroutine(LogicOnMovement(context, waitToStart));
+    }
+
+    private IEnumerator LogicOnMovement(InputAction.CallbackContext context, float delayInSeconds)
+    {
+        yield return camTran.ActivateAndMoveCamera(gewuenschte_level_Index, waitToStart);
+        if (NegativCheck_GIndex_With_LSIndex())
         {
             startLevel();
         }
+    }
 
+    private bool NegativCheck_GIndex_With_LSIndex()
+    {
+        if (!(gewuenschte_level_Index == levelSelect_Index))
+        {
+            print("Settings wurden noch nicht Implementiert"); // Settings Implementieren
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }

@@ -2,29 +2,46 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
+
 public class MenueLogik : MonoBehaviour
 {
-    private bool secret_level_start = false;
-    // Start is called before the first frame update
-    void Start()
-    {
+    [SerializeField] private RotateAroundPivot guyRotater;
+    [SerializeField] private RotateAroundPivot movetarget;
+    [SerializeField] private UnlockLevel unlockLevel;
+    //[SerializeField] private BoxCollider boxcollider;
+    private InputSystem inputSystem;
 
+    #region input stuff
+    private void Awake()
+    {
+        inputSystem = new InputSystem();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnEnable()
     {
-        
-        if (secret_level_start == false && Input.GetAxisRaw("Horizontal") == 0)
-        {
-            secret_level_start = true;
-            //hier startet das level
-        }
-          
-        if (Input.GetKeyDown(KeyCode.UpArrow))
-        {
-           SceneManager.LoadScene("LevelSelectScene");
-        }
-         
-    } 
+        inputSystem.Menu.Enable();
+        inputSystem.Menu.Vertical.performed += weiterGehenPerformed;
+    }
+
+    private void OnDisable()
+    {
+        inputSystem.Menu.Disable();
+        inputSystem.Menu.Vertical.performed -= weiterGehenPerformed;
+    }
+    #endregion 
+
+    private void weiterGehenPerformed(InputAction.CallbackContext context)
+    {
+        guyRotater.enabled = true;
+        movetarget.enabled = true;
+        // boxcollider.enabled = false;
+        unlockLevel.SaveCurrentSceneName();
+        StartCoroutine(LoadSceneDelayed("LevelSelectScene", 3f));
+    }
+    private IEnumerator LoadSceneDelayed(string sceneName, float delayInSeconds)
+    {
+        yield return new WaitForSeconds(delayInSeconds);
+        SceneManager.LoadScene(sceneName);
+    }
 }

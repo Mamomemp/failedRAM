@@ -8,9 +8,9 @@ public class PlayerManager : MonoBehaviour
     private int spieler_leben;
     [SerializeField] private GameObject Spieler_Object;
 
-    [SerializeField] private HealthBar healthBar;
-    [SerializeField] private ObjektPulser objektPulser;
-
+    [SerializeField] private Optional<HealthBar> healthBar;
+    [SerializeField] private Optional<ObjektPulser> objektPulser;
+    
     [SerializeField] private float dead_delay;
     [SerializeField] private float grace_period = 1f;
     private float letzter_treffer;
@@ -19,7 +19,10 @@ public class PlayerManager : MonoBehaviour
     void Start()
     {
         spieler_leben = max_spieler_leben;
-        healthBar.SetMaxHealth(max_spieler_leben);
+        if (healthBar.Value != null)
+        {
+            healthBar.Value.SetMaxHealth(max_spieler_leben);
+        }
         letzter_treffer = Time.time - grace_period;
     }
 
@@ -46,8 +49,14 @@ public class PlayerManager : MonoBehaviour
 
     private void damage_nehmen(int damage)
     {
-        objektPulser.Pulse();
         spieler_leben -= damage;
-        healthBar.SetHealth(spieler_leben);
+        if (objektPulser.Value != null)
+        {
+            objektPulser.Value.Pulse();
+        }
+        if (healthBar.Value != null)
+        {
+            healthBar.Value.SetHealth(spieler_leben);
+        }
     }
 }
