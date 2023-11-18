@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 
 public class CameraLevelSelectTransition : MonoBehaviour
@@ -13,14 +13,16 @@ public class CameraLevelSelectTransition : MonoBehaviour
     [SerializeField] private GameObject player;
     [SerializeField] private GameObject target_player;
     [SerializeField] private GameObject target_screen;
+    private Transform target;
+
 
     [SerializeField] private GameObject[] gameObject_Array;
 
     [SerializeField] private float Cam_geschwindichkeit = 1f;
     [SerializeField] private string scene_Name;
     private string secret_name = "SampleScene";
-    private string start_scene_name = "StartMenueScene"; 
-    private string LevelSelect_name = "LevelSelectScene"; 
+    private string start_scene_name = "StartMenueScene";
+    private string LevelSelect_name = "LevelSelectScene";
 
     private void Awake()
     {
@@ -35,7 +37,6 @@ public class CameraLevelSelectTransition : MonoBehaviour
 
     void TeleportObjects()
     {
-        #region tp spell
         foreach (GameObject obj in gameObject_Array)
         {
             if (obj.name == scene_Name)
@@ -66,17 +67,16 @@ public class CameraLevelSelectTransition : MonoBehaviour
                 break;
             }
         }
-        #endregion
     }
 
-    #region Moveto
     IEnumerator MoveToMainCameraPosition(bool zuMainCam, GameObject targetObject)
     {
-        Transform target;
         GameObject deactivatedcam;
         GameObject activatedcam;
         float offset = 0.5f;
-        Vector3 vector = new Vector3(targetObject.transform.position.x, targetObject.transform.position.y + offset, targetObject.transform.position.z);
+        bool startmoving = false;
+        Vector3 initialTransitionCamPosition = Vector3.zero; // Store the initial position
+
         if (zuMainCam)
         {
             target = main_Camera.transform;
@@ -85,53 +85,69 @@ public class CameraLevelSelectTransition : MonoBehaviour
         }
         else
         {
-            target = targetObject.transform;//fehler behebung
-            target.transform.position = vector;//positions auswehlen
+            initialTransitionCamPosition = transition_Camera.transform.position; // Store the initial position
+            target = screen_GO.transform; // Ziel ist das Transform der transition_Camera
+            target.position = targetObject.transform.position + new Vector3(0, offset, 0);
 
             activatedcam = transition_Camera.gameObject;
             deactivatedcam = main_Camera.gameObject;
+            startmoving = true;
         }
 
-        while (transition_Camera.transform.position != target.position)
+        if (startmoving)
         {
-            transition_Camera.transform.position = Vector3.MoveTowards(transition_Camera.transform.position, target.position, Cam_geschwindichkeit * Time.deltaTime);
-            yield return null; // Wait for the next frame
-        }
-
-        // Main Camera is now active, transition Camera is deactivated
-        activatedcam.SetActive(true);
-        deactivatedcam.SetActive(false);
-    }
-    #endregion
-
-    // Added method for camera activation and movement
-    public void ActivateAndMoveCamera(string destination)
-    {
-        main_Camera.gameObject.SetActive(false);
-        transition_Camera.gameObject.SetActive(true);
-
-        // Check if the scene_name equals start_scene_name
-        if (scene_Name == start_scene_name)
-        {
-            //start at phone_GO
-            //transition_Camera.transform.position = phone_GO.transform.position;
-            MoveToMainCameraPosition(false, phone_GO);
-        }
-        else if (destination == secret_name)
-        {
-            //transition_Camera.transform.position = secret_GO.transform.position;
-            MoveToMainCameraPosition(false, secret_GO);
-
-        }
-        else if(destination == LevelSelect_name) //screen
-        {
-
+            while (transition_Camera.transform.position != target.position)
+            {
+                activatedcam.SetActive(true);
+                deactivatedcam.SetActive(false);
+                transition_Camera.transform.position = Vector3.MoveTowards(transition_Camera.transform.position, target.position, Cam_geschwindichkeit * Time.deltaTime);
+                yield return null; // Warte auf den nächsten Frame
+            }
         }
         else
         {
-            //transition_Camera.transform.position = screen_GO.transform.position;
-            MoveToMainCameraPosition(false, screen_GO);
+            while (target.position != transition_Camera.transform.position)
+            {
+         
+                transition_Camera.transform.position = Vector3.MoveTowards(transition_Camera.transform.position, target.position, Cam_geschwindichkeit * Time.deltaTime);
+                yield return null; // Warte auf den nächsten Frame
+            }
         }
-        
+
+        yield return null;
+        // Main Camera ist jetzt aktiv, transition Camera ist deaktiviert
+       activatedcam.SetActive(true);
+       deactivatedcam.SetActive(false);
+        // If transitioning from main_Camera to transition_Camera, reset transition_Camera's position to the initial position
+        if (!zuMainCam)
+        {
+            transition_Camera.transform.position = initialTransitionCamPosition;
+        }
     }
+
+    // Added method for camera activation and movement
+    public IEnumerator ActivateAndMoveCamera(string destination, float waitTime)
+    {
+        if (scene_Name == start_scene_name)
+        {
+            yield return MoveToMainCameraPosition(false, phone_GO);
+        }
+        else if (destination == secret_name)
+        {
+            yield return MoveToMainCameraPosition(false, secret_GO);
+        }
+        else if (destination == LevelSelect_name) //Setting WIP
+        {   
+            yield return MoveToMainCameraPosition(true, screen_GO);
+
+        }
+        else //screen
+        {
+            yield return MoveToMainCameraPosition(false, screen_GO);
+        }
+
+        yield return new WaitForSeconds(waitTime);
+    }
+
 }
+

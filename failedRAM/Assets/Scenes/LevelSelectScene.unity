@@ -748,6 +748,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camTran: {fileID: 1104304984}
+  unlockLevel: {fileID: 11400000, guid: cb4010a4979ac4a4fb25746d1b0eb15b, type: 2}
+  waitToStart: 1
 --- !u!65 &677753836
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1210,7 +1212,7 @@ Transform:
   m_GameObject: {fileID: 997348928}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8, y: 9, z: 0.92}
+  m_LocalPosition: {x: 6.9, y: 9, z: 0.92}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1262,10 +1264,8 @@ MonoBehaviour:
   - {fileID: 1850201212}
   - {fileID: 1305632061}
   - {fileID: 1786771299}
-  secret_name: SampleScene
-  Cam_geschwindichkeit: 3
+  Cam_geschwindichkeit: 8
   scene_Name: StartMenueScene
-  start_scene_name: StartMenueScene
 --- !u!114 &1104304985
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2404,8 +2404,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 1, z: 0.2}
-  m_Center: {x: 0, y: 0, z: -0.00000023841858}
+  m_Size: {x: 2, y: 1, z: 2.5227356}
+  m_Center: {x: 0, y: 0, z: 0.27618122}
 --- !u!4 &1786771301
 Transform:
   m_ObjectHideFlags: 0
@@ -2415,7 +2415,7 @@ Transform:
   m_GameObject: {fileID: 1786771299}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2, z: -8}
+  m_LocalPosition: {x: 0, y: 2, z: -9.71}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
