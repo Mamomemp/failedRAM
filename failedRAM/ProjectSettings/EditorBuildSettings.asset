@@ -14,7 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: "Assets/Scenes/W\xFCsten Demo.unity"
     guid: 483a9860d788da0419eb6521c45b5ee5
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/RoboLevel.unity
     guid: f64901d545e7e374d924b1b2ca0ec6ba
   - enabled: 1
