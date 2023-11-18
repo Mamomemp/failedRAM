@@ -2,68 +2,78 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Playables;
 using UnityEngine.UI;
 
-public class pausemanager : MonoBehaviour
+public class GamePauseManager : MonoBehaviour
 {
-    public AudioClip backgroundMusic; 
-    public AudioClip pauseMusic; 
-    public GameObject pausePanel;
-    public GameObject VendingMachine;
+    [SerializeField] private AudioSource backgroundAudioSource;
+    [SerializeField] private AudioClip pauseMusic;
+    [SerializeField] private GameObject pausePanel;
+    [SerializeField] private GameObject vendingMachine;
 
-    private AudioSource backgroundAudioSource; // make it Optional
-    private AudioSource pauseAudioSource; 
+    private AudioSource pauseAudioSource;
+    private PlayableDirector playableDirector;
 
     private bool isPaused = false;
 
-    private void Awake()
-    {
-        if (VendingMachine == null)
-        {
-            VendingMachine = new GameObject();
-        }
-    }
-
     void Start()
     {
-        backgroundAudioSource = gameObject.AddComponent<AudioSource>(); // gleiche abfrage wie in der Awake aber mit demhier
-        pauseAudioSource = gameObject.AddComponent<AudioSource>();
+        if (backgroundAudioSource == null)
+        {
+            backgroundAudioSource = gameObject.AddComponent<AudioSource>();
+        }
 
-        // Konfiguriere die Hintergrundmusik
-        backgroundAudioSource.clip = backgroundMusic;
-        backgroundAudioSource.loop = true;
+        pauseAudioSource = gameObject.AddComponent<AudioSource>();
+      
+
+        // Configure background music
+        if (backgroundAudioSource.clip == null)
+        {
+            Debug.LogWarning("Background audio clip is not set. Please assign a clip in the inspector.");
+        }
+        else
+        {
+            backgroundAudioSource.loop = true;
+            backgroundAudioSource.Play();
+        }
+
         pauseAudioSource.loop = true;
-        backgroundAudioSource.Play();
 
         pausePanel.SetActive(false);
-        VendingMachine.SetActive(false);
-
+        vendingMachine.SetActive(false);
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P)) // ersetzten mit dem new inputsystem
+        if (Input.GetKeyDown(KeyCode.P))
         {
-            // Pause-Logik
-            if (isPaused)
-            {
-                Time.timeScale = 1f; // Setze das Spiel fort
-                backgroundAudioSource.UnPause(); 
-                pauseAudioSource.Stop(); 
-                pausePanel.SetActive(false);
-                VendingMachine.SetActive(false);
-                isPaused = false; 
-            }
-            else
-            {
-                Time.timeScale = 0f; // Pausiere das Spiel
-                backgroundAudioSource.Pause(); 
-                pauseAudioSource.clip = pauseMusic; 
-                pauseAudioSource.Play(); 
-                pausePanel.SetActive(true);
-                VendingMachine.SetActive(true);
-                isPaused = true; 
-            }
+            TogglePause();
+        }
+    }
+
+    void TogglePause()
+    {
+        isPaused = !isPaused;
+
+        if (isPaused)
+        {
+            Time.timeScale = 0f; // Pause the game
+            backgroundAudioSource.Pause();
+            pauseAudioSource.clip = pauseMusic;
+            pauseAudioSource.Play();
+            pausePanel.SetActive(true);
+            vendingMachine.SetActive(true);
+            
+        }
+        else
+        {
+            Time.timeScale = 1f; // Resume the game
+            backgroundAudioSource.UnPause();
+            pauseAudioSource.Stop();
+            pausePanel.SetActive(false);
+            vendingMachine.SetActive(false);
+           
         }
     }
 }

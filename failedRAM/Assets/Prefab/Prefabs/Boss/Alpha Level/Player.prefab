@@ -169,7 +169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bb63522a2755304894572223019a1f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target_sprung_weite: 3
+  target_sprung_weite: 2.65
   spieler_geschwindichkeit: 25
   lauf_coldown: 0.9
   target: {fileID: 5711026940544164942}
