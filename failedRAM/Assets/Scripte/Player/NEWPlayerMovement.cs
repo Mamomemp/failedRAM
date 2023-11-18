@@ -7,6 +7,7 @@ public class NEWPlayerMovement : MonoBehaviour
     [SerializeField] private float target_sprung_weite;
     [SerializeField] private float spieler_geschwindichkeit;
     [SerializeField] private float lauf_coldown;
+    [SerializeField] private float check_size = 0.5f;
     private Vector2 moveInput;
 
     [SerializeField] private Transform target;
@@ -53,7 +54,7 @@ public class NEWPlayerMovement : MonoBehaviour
         if (moveInput != Vector2.zero)
         {
             moveDirection = new Vector3(moveInput.x * target_sprung_weite, 0f, moveInput.y * target_sprung_weite);
-        }
+        } 
 
         if (CanMove() && !wird_knopf_benutzt && moveDirection != Vector3.zero)
         {
@@ -102,11 +103,11 @@ public class NEWPlayerMovement : MonoBehaviour
     {
         if (invert)
         {
-            return Physics.CheckSphere(target.position - direction, 0.5f, barriere_Layer);
+            return Physics.CheckSphere(target.position - direction, check_size, barriere_Layer);
         }
         else
         {
-            return Physics.CheckSphere(target.position + direction, 0.5f, barriere_Layer);
+            return Physics.CheckSphere(target.position + direction, check_size, barriere_Layer);
         }
     }
 

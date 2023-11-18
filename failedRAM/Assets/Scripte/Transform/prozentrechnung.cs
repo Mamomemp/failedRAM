@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[ExecuteInEditMode]
 public class PercentagePositioning : MonoBehaviour
 {
-    public float leftPercentage; // Linker Rand in Prozent
-    public float topPercentage; // Oberer Rand in Prozent
-    public float widthPercentage; // Breite in Prozent
-    public float heightPercentage; // Höhe in Prozent
+    [SerializeField] private float leftPercentage; // Linker Rand in Prozent
+    [SerializeField] private float topPercentage; // Oberer Rand in Prozent
+    [SerializeField] private float widthPercentage; // Breite in Prozent
+    [SerializeField] private float heightPercentage; // Höhe in Prozent
 
     private RectTransform uiElementRect;
     private RectTransform canvasRect;
