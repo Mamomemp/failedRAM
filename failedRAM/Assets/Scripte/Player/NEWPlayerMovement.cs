@@ -13,6 +13,7 @@ public class NEWPlayerMovement : MonoBehaviour
     [SerializeField] private LayerMask barriere_Layer;
 
     [SerializeField] private bool invert;
+    [SerializeField] private bool invertanimation;
     private bool wird_knopf_benutzt = false;
 
     private InputSystem inputSystem;
@@ -113,7 +114,14 @@ public class NEWPlayerMovement : MonoBehaviour
     {
         Vector2 direction = context.ReadValue<Vector2>();
 
-        if (direction != Vector2.zero)
+        if ((direction != Vector2.zero)&&(invertanimation))
+        {
+            float angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
+            // Negate the direction.y to invert the rotation
+            transform.rotation = Quaternion.Euler(0f, Mathf.Atan2(-direction.x, -direction.y) * Mathf.Rad2Deg, 0f);
+
+        }
+        else if(direction != Vector2.zero)
         {
             float angle = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
