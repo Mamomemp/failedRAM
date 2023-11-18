@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class pausemanager : MonoBehaviour
 {
@@ -12,7 +13,8 @@ public class pausemanager : MonoBehaviour
     public GameObject VendingMachine;
 
     private AudioSource backgroundAudioSource; // make it Optional
-    private AudioSource pauseAudioSource; 
+    private AudioSource pauseAudioSource;
+    private InputSystem inputSystem;
 
     private bool isPaused = false;
 
@@ -22,6 +24,19 @@ public class pausemanager : MonoBehaviour
         {
             VendingMachine = new GameObject();
         }
+        inputSystem = new InputSystem();
+
+    }
+    private void OnEnable()
+    {
+        inputSystem.Player.Enable();
+        inputSystem.Menu.PauseKnopf.performed += OnMovementPerformed;
+    }
+
+    private void OnDisable()
+    {
+        inputSystem.Player.Disable();
+        inputSystem.Menu.PauseKnopf.performed -= OnMovementPerformed;
     }
 
     void Start()
@@ -64,6 +79,29 @@ public class pausemanager : MonoBehaviour
                 VendingMachine.SetActive(true);
                 isPaused = true; 
             }
+        }
+    }
+    private void OnMovementPerformed(InputAction.CallbackContext context)
+    {
+        // Pause-Logik
+        if (isPaused)
+        {
+            Time.timeScale = 1f; // Setze das Spiel fort
+            backgroundAudioSource.UnPause();
+            pauseAudioSource.Stop();
+            pausePanel.SetActive(false);
+            VendingMachine.SetActive(false);
+            isPaused = false;
+        }
+        else
+        {
+            Time.timeScale = 0f; // Pausiere das Spiel
+            backgroundAudioSource.Pause();
+            pauseAudioSource.clip = pauseMusic;
+            pauseAudioSource.Play();
+            pausePanel.SetActive(true);
+            VendingMachine.SetActive(true);
+            isPaused = true;
         }
     }
 }
