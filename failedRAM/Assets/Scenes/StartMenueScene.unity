@@ -910,6 +910,7 @@ GameObject:
   - component: {fileID: 389651695}
   - component: {fileID: 389651697}
   - component: {fileID: 389651698}
+  - component: {fileID: 389651699}
   m_Layer: 0
   m_Name: Game Manager Pivot Target Car Spawner
   m_TagString: schaedlich
@@ -988,10 +989,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a84c810c4da63c4d80d0fd89a865ced, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  backgroundMusic: {fileID: 8300000, guid: 399aea006e69fff4994f41647b6cf653, type: 3}
+  backgroundAudioSource: {fileID: 389651699}
   pauseMusic: {fileID: 8300000, guid: ad2a412997796b04497a0e999778fc65, type: 3}
   pausePanel: {fileID: 963678158}
-  VendingMachine: {fileID: 1362919963}
+  vendingMachine: {fileID: 1362919963}
 --- !u!114 &389651698
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1014,6 +1015,102 @@ MonoBehaviour:
   minSpawnFrequency: 2
   maxSpawnFrequency: 4
   startSpawning: 0
+--- !u!82 &389651699
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 389651692}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 399aea006e69fff4994f41647b6cf653, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &456721803
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1764,6 +1861,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   invert: 1
+  invertanimation: 0
 --- !u!114 &1242192981
 MonoBehaviour:
   m_ObjectHideFlags: 0
