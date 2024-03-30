@@ -2,17 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using UnityEngine.Playables;
+using UnityEngine.UI;
 
 public class pausemanager : MonoBehaviour
 {
-    public AudioClip backgroundMusic; 
-    public AudioClip pauseMusic; 
-    public GameObject pausePanel;
-    public GameObject VendingMachine;
+    [SerializeField] private AudioSource backgroundAudioSource;
+    [SerializeField] private AudioClip pauseMusic;
+    [SerializeField] private GameObject pausePanel;
+    [SerializeField] private GameObject vendingMachine;
 
-    private AudioSource backgroundAudioSource; // make it Optional
     private AudioSource pauseAudioSource;
     private InputSystem inputSystem;
 
@@ -43,6 +43,20 @@ public class pausemanager : MonoBehaviour
     {
         backgroundAudioSource = gameObject.AddComponent<AudioSource>(); // gleiche abfrage wie in der Awake aber mit demhier
         pauseAudioSource = gameObject.AddComponent<AudioSource>();
+
+        pauseAudioSource = gameObject.AddComponent<AudioSource>();
+      
+
+        // Configure background music
+        if (backgroundAudioSource.clip == null)
+        {
+            Debug.LogWarning("Background audio clip is not set. Please assign a clip in the inspector.");
+        }
+        else
+        {
+            backgroundAudioSource.loop = true;
+            backgroundAudioSource.Play();
+        }
 
         // Konfiguriere die Hintergrundmusik
         backgroundAudioSource.clip = backgroundMusic;
@@ -100,8 +114,19 @@ public class pausemanager : MonoBehaviour
             pauseAudioSource.clip = pauseMusic;
             pauseAudioSource.Play();
             pausePanel.SetActive(true);
-            VendingMachine.SetActive(true);
+
             isPaused = true;
+            vendingMachine.SetActive(true);
+            
+        }
+        else
+        {
+            Time.timeScale = 1f; // Resume the game
+            backgroundAudioSource.UnPause();
+            pauseAudioSource.Stop();
+            pausePanel.SetActive(false);
+            vendingMachine.SetActive(false);
+
         }
     }
 }
