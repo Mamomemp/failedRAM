@@ -20,9 +20,9 @@ public class pausemanager : MonoBehaviour
 
     private void Awake()
     {
-        if (VendingMachine == null)
+        if (vendingMachine == null)
         {
-            VendingMachine = new GameObject();
+            vendingMachine = new GameObject();
         }
         inputSystem = new InputSystem();
 
@@ -30,13 +30,13 @@ public class pausemanager : MonoBehaviour
     private void OnEnable()
     {
         inputSystem.Player.Enable();
-        inputSystem.Menu.PauseKnopf.performed += OnMovementPerformed;
+        inputSystem.Menu.PauseKnopf.performed += OnPausePerformed;
     }
 
     private void OnDisable()
     {
         inputSystem.Player.Disable();
-        inputSystem.Menu.PauseKnopf.performed -= OnMovementPerformed;
+        inputSystem.Menu.PauseKnopf.performed -= OnPausePerformed;
     }
 
     void Start()
@@ -45,7 +45,7 @@ public class pausemanager : MonoBehaviour
         pauseAudioSource = gameObject.AddComponent<AudioSource>();
 
         pauseAudioSource = gameObject.AddComponent<AudioSource>();
-      
+
 
         // Configure background music
         if (backgroundAudioSource.clip == null)
@@ -59,43 +59,42 @@ public class pausemanager : MonoBehaviour
         }
 
         // Konfiguriere die Hintergrundmusik
-        backgroundAudioSource.clip = backgroundMusic;
         backgroundAudioSource.loop = true;
         pauseAudioSource.loop = true;
         backgroundAudioSource.Play();
 
         pausePanel.SetActive(false);
-        VendingMachine.SetActive(false);
+        vendingMachine.SetActive(false);
 
     }
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.P)) // ersetzten mit dem new inputsystem
-        {
-            // Pause-Logik
-            if (isPaused)
-            {
-                Time.timeScale = 1f; // Setze das Spiel fort
-                backgroundAudioSource.UnPause(); 
-                pauseAudioSource.Stop(); 
-                pausePanel.SetActive(false);
-                VendingMachine.SetActive(false);
-                isPaused = false; 
-            }
-            else
-            {
-                Time.timeScale = 0f; // Pausiere das Spiel
-                backgroundAudioSource.Pause(); 
-                pauseAudioSource.clip = pauseMusic; 
-                pauseAudioSource.Play(); 
-                pausePanel.SetActive(true);
-                VendingMachine.SetActive(true);
-                isPaused = true; 
-            }
-        }
-    }
-    private void OnMovementPerformed(InputAction.CallbackContext context)
+    /* void Update() //Allter Input
+     {
+         if (Input.GetKeyDown(KeyCode.P)) // ersetzten mit dem new inputsystem
+         {
+             // Pause-Logik
+             if (isPaused)
+             {
+                 Time.timeScale = 1f; // Setze das Spiel fort
+                 backgroundAudioSource.UnPause(); 
+                 pauseAudioSource.Stop(); 
+                 pausePanel.SetActive(false);
+                 vendingMachine.SetActive(false);
+                 isPaused = false; 
+             }
+             else
+             {
+                 Time.timeScale = 0f; // Pausiere das Spiel
+                 backgroundAudioSource.Pause(); 
+                 pauseAudioSource.clip = pauseMusic; 
+                 pauseAudioSource.Play(); 
+                 pausePanel.SetActive(true);
+                 vendingMachine.SetActive(true);
+                 isPaused = true; 
+             }
+         }
+     } */
+    private void OnPausePerformed(InputAction.CallbackContext context)
     {
         // Pause-Logik
         if (isPaused)
@@ -104,7 +103,7 @@ public class pausemanager : MonoBehaviour
             backgroundAudioSource.UnPause();
             pauseAudioSource.Stop();
             pausePanel.SetActive(false);
-            VendingMachine.SetActive(false);
+            vendingMachine.SetActive(false);
             isPaused = false;
         }
         else
@@ -117,16 +116,6 @@ public class pausemanager : MonoBehaviour
 
             isPaused = true;
             vendingMachine.SetActive(true);
-            
-        }
-        else
-        {
-            Time.timeScale = 1f; // Resume the game
-            backgroundAudioSource.UnPause();
-            pauseAudioSource.Stop();
-            pausePanel.SetActive(false);
-            vendingMachine.SetActive(false);
-
         }
     }
 }
